@@ -1,0 +1,22 @@
+{
+  "name": "louvres",
+  "authors": [
+    "florentingarnier <garnier.florentin@gmail.com>"
+  ],
+  "description": "Application for order tickets",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "web/assets/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+
+}
