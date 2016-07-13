@@ -9,6 +9,7 @@
 namespace AppBundle\Entity;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -53,16 +54,20 @@ class Booking
 
     /**
      * @var
-     * @ORM\Column(type="string", length=125)
+     * @ORM\Column(type="string", length=125, nullable=true)
      */
     private $email;
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Visitor", mappedBy="booking")
      */
     private $visitors;
 
+    public function __construct()
+    {
+        $this->visitors = new ArrayCollection();
+        $this->created_date = new \DateTime();
+    }
 
     /**
      * @return mixed
@@ -174,6 +179,22 @@ class Booking
     public function setVisitors($visitors)
     {
         $this->visitors = $visitors;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getBookings()
+    {
+        return $this->bookings;
+    }
+
+    /**
+     * @param ArrayCollection $bookings
+     */
+    public function setBookings($bookings)
+    {
+        $this->bookings = $bookings;
     }
 
 

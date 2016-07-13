@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body%}
+    <div class="container">
+    {{ form_start(form) }}
+
+        {% for visitor in form.visitors %}
+        <div class="well">
+                {{ form_row(visitor.firstName) }}
+                {{ form_row(visitor.lastName) }}
+                {{ form_row(visitor.birthday) }}
+                {{ form_row(visitor.reduce) }}
+        </div>
+        {% endfor %}
+
+    <input type="submit" class="btn btn-info" value="Continuer" />
+    {{ form_end(form) }}
+    </div>
+{% endblock %}
