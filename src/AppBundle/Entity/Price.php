@@ -29,9 +29,9 @@ class Price
     private $name;
 
     /**
-     * @var float
+     * @var decimal
      *
-     * @ORM\Column(name="value", type="float")
+     * @ORM\Column(name="value", type="decimal")
      */
     private $value;
 
