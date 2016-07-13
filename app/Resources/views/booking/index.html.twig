@@ -1,12 +1,26 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}{{ parent()}} | Booking {% endblock %}
+
 {% block body %}
     <div class="container">
         {{ form_start(form) }}
         {{ form_row(form.visit_date) }}
         {{ form_row(form.half_day) }}
-        {{ form_row(form.number_ticket) }}
-        <input type="submit" class="btn btn-info" value="Continuer"/>
+
+
+        {{ form_row(form.visitors) }}
+
+        <button id="add_form" class="btn btn-default">Add visitor</button>
+
+
+
+        <input type="submit" class="btn btn-info pull-right" value="Continuer"/>
         {{ form_end(form) }}
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/form.js') }}" ></script>
 {% endblock %}

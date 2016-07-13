@@ -46,11 +46,6 @@ class Booking
      */
     private $half_day;
 
-    /**
-     * @var
-     * @ORM\Column(type="integer")
-     */
-    private $number_ticket;
 
     /**
      * @var
@@ -59,7 +54,9 @@ class Booking
     private $email;
 
     /**
-     * @var
+     * @var int
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Visitor", cascade={"persist"})
+     *
      */
     private $visitors;
 

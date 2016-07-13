@@ -52,8 +52,8 @@ class Visitor
     private $reduce = false;
 
     /**
-     * @var
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Booking", inversedBy="visitors")
+     * @var int
+     *
      */
     private $booking;
 

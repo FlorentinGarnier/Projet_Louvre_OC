@@ -17,6 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class BookingType extends AbstractType
 {
@@ -27,20 +28,17 @@ class BookingType extends AbstractType
             ->add('half_day', CheckboxType::class,[
                 'required' => false
             ])
-            ->add('number_ticket', ChoiceType::class, [
-                'choices' => [
-                    '1' => 1,
-                    '2' => 2,
-                    '3' => 3,
-                    '4' => 4,
-                    '5' => 5,
-                    '6' => 6,
-                    '7' => 7,
-                    '8' => 8,
-                    '9' => 9,
-                    '10' => 10
-                ]
-            ])
+            ->add('visitors', CollectionType::class, [
+                'entry_type' => VisitorType::class,
+                'allow_add' => true
+            ]);
         ;
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => 'AppBundle\Entity\Booking'
+        ]);
     }
 }
