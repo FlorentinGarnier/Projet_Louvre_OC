@@ -24,7 +24,9 @@ class BookingType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('visit_date', DateType::class)
+            ->add('visit_date', DateType::class, [
+                'widget' => 'single_text'
+            ])
             ->add('half_day', CheckboxType::class,[
                 'required' => false
             ])

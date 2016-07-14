@@ -22,7 +22,7 @@ class LoadPrice implements FixtureInterface
             'normal' => 16.00,
             'enfant' => 8.00,
             'senior' => 12.00,
-            'réduit' => 10.00,
+            'reduit' => 10.00,
             'famille' => 35.00
         ];
 

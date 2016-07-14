@@ -13,5 +13,17 @@ use Doctrine\ORM\EntityRepository;
 
 class VisitorRepository extends EntityRepository
 {
+    public function findVisitorsByBookingNb($bookingNb)
+    {
+        $qb = $this->createQueryBuilder('v');
+        $qb->join('v.booking', 'booking')
+            ->addSelect('booking')
+            ->where('booking.id = :bookingNb')
+            ->setParameter(':bookingNb', $bookingNb)
+        ;
 
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
 }

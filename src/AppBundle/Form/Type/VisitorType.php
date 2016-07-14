@@ -23,7 +23,9 @@ class VisitorType extends AbstractType
         $builder
             ->add('firstName', TextType::class)
             ->add('lastName', TextType::class)
-            ->add('birthday', DateType::class)
+            ->add('birthday', DateType::class, [
+                'widget' => 'single_text',
+            ])
             ->add('reduce', CheckboxType::class, [
                 'required' => false
             ])

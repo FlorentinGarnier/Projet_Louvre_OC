@@ -54,10 +54,15 @@ class Visitor
     /**
      * @var int
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Booking", inversedBy="visitors")
-     * @ORM\JoinColumn(name="booking_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="booking_id", referencedColumnName="id", nullable=false)
      */
     private $booking;
 
+    /**
+     * @var numeric
+     * @ORM\Column(type="decimal", nullable=true)
+     */
+    private $price;
   
 
     /**
@@ -188,5 +193,21 @@ class Visitor
     public function getBooking()
     {
         return $this->booking;
+    }
+
+    /**
+     * @return numeric
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param numeric $price
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
     }
 }
