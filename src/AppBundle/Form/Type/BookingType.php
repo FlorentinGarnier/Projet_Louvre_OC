@@ -29,8 +29,10 @@ class BookingType extends AbstractType
                 'required' => false
             ])
             ->add('visitors', CollectionType::class, [
+                'by_reference' => false,
                 'entry_type' => VisitorType::class,
-                'allow_add' => true
+                'allow_add' => true,
+                'allow_delete' => true
             ]);
         ;
     }

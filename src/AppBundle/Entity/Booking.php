@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Class Visitor
  * @package AppBundle\Entity
- * @ORM\Table(name="booking")
+ * @ORM\Table(name="Booking")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\BookingRepository")
  */
 class Booking
@@ -24,7 +24,7 @@ class Booking
      * @var
      * @ORM\Id
      * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -55,10 +55,11 @@ class Booking
 
     /**
      * @var int
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Visitor", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Visitor", mappedBy="booking", cascade={"persist"})
      *
      */
     private $visitors;
+
 
     public function __construct()
     {
@@ -66,8 +67,12 @@ class Booking
         $this->created_date = new \DateTime();
     }
 
+   
+
     /**
-     * @return mixed
+     * Get id
+     *
+     * @return integer
      */
     public function getId()
     {
@@ -75,15 +80,23 @@ class Booking
     }
 
     /**
-     * @param mixed $id
+     * Set visitDate
+     *
+     * @param \DateTime $visitDate
+     *
+     * @return Booking
      */
-    public function setId($id)
+    public function setVisitDate($visitDate)
     {
-        $this->id = $id;
+        $this->visit_date = $visitDate;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * Get visitDate
+     *
+     * @return \DateTime
      */
     public function getVisitDate()
     {
@@ -91,15 +104,23 @@ class Booking
     }
 
     /**
-     * @param mixed $visit_date
+     * Set createdDate
+     *
+     * @param \DateTime $createdDate
+     *
+     * @return Booking
      */
-    public function setVisitDate($visit_date)
+    public function setCreatedDate($createdDate)
     {
-        $this->visit_date = $visit_date;
+        $this->created_date = $createdDate;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * Get createdDate
+     *
+     * @return \DateTime
      */
     public function getCreatedDate()
     {
@@ -107,15 +128,23 @@ class Booking
     }
 
     /**
-     * @param mixed $created_date
+     * Set halfDay
+     *
+     * @param boolean $halfDay
+     *
+     * @return Booking
      */
-    public function setCreatedDate($created_date)
+    public function setHalfDay($halfDay)
     {
-        $this->created_date = $created_date;
+        $this->half_day = $halfDay;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * Get halfDay
+     *
+     * @return boolean
      */
     public function getHalfDay()
     {
@@ -123,31 +152,23 @@ class Booking
     }
 
     /**
-     * @param mixed $half_day
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return Booking
      */
-    public function setHalfDay($half_day)
+    public function setEmail($email)
     {
-        $this->half_day = $half_day;
+        $this->email = $email;
+
+        return $this;
     }
 
     /**
-     * @return mixed
-     */
-    public function getNumberTicket()
-    {
-        return $this->number_ticket;
-    }
-
-    /**
-     * @param mixed $number_ticket
-     */
-    public function setNumberTicket($number_ticket)
-    {
-        $this->number_ticket = $number_ticket;
-    }
-
-    /**
-     * @return mixed
+     * Get email
+     *
+     * @return string
      */
     public function getEmail()
     {
@@ -155,44 +176,36 @@ class Booking
     }
 
     /**
-     * @param mixed $email
+     * Add visitor
+     *
+     * @param \AppBundle\Entity\Visitor $visitor
+     *
+     * @return Booking
      */
-    public function setEmail($email)
+    public function addVisitor(Visitor $visitor)
     {
-        $this->email = $email;
+        $this->visitors[] = $visitor;
+        $visitor->setBooking($this);
+        return $this;
     }
 
     /**
-     * @return mixed
+     * Remove visitor
+     *
+     * @param \AppBundle\Entity\Visitor $visitor
+     */
+    public function removeVisitor(Visitor $visitor)
+    {
+        $this->visitors->removeElement($visitor);
+    }
+
+    /**
+     * Get visitors
+     *
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getVisitors()
     {
         return $this->visitors;
     }
-
-    /**
-     * @param mixed $visitors
-     */
-    public function setVisitors($visitors)
-    {
-        $this->visitors = $visitors;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getBookings()
-    {
-        return $this->bookings;
-    }
-
-    /**
-     * @param ArrayCollection $bookings
-     */
-    public function setBookings($bookings)
-    {
-        $this->bookings = $bookings;
-    }
-
-
 }

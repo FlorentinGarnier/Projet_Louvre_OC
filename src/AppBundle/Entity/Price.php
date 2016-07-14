@@ -39,7 +39,7 @@ class Price
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -73,7 +73,7 @@ class Price
     /**
      * Set value
      *
-     * @param float $value
+     * @param string $value
      *
      * @return Price
      */
@@ -87,11 +87,10 @@ class Price
     /**
      * Get value
      *
-     * @return float
+     * @return string
      */
     public function getValue()
     {
         return $this->value;
     }
 }
-

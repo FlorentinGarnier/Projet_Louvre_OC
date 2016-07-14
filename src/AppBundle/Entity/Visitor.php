@@ -23,7 +23,7 @@ class Visitor
      * @var
      * @ORM\Id()
      * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue()
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -53,12 +53,17 @@ class Visitor
 
     /**
      * @var int
-     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Booking", inversedBy="visitors")
+     * @ORM\JoinColumn(name="booking_id", referencedColumnName="id")
      */
     private $booking;
 
+  
+
     /**
-     * @return mixed
+     * Get id
+     *
+     * @return integer
      */
     public function getId()
     {
@@ -66,15 +71,23 @@ class Visitor
     }
 
     /**
-     * @param mixed $id
+     * Set firstName
+     *
+     * @param string $firstName
+     *
+     * @return Visitor
      */
-    public function setId($id)
+    public function setFirstName($firstName)
     {
-        $this->id = $id;
+        $this->firstName = $firstName;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * Get firstName
+     *
+     * @return string
      */
     public function getFirstName()
     {
@@ -82,15 +95,23 @@ class Visitor
     }
 
     /**
-     * @param mixed $firstName
+     * Set lastName
+     *
+     * @param string $lastName
+     *
+     * @return Visitor
      */
-    public function setFirstName($firstName)
+    public function setLastName($lastName)
     {
-        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * Get lastName
+     *
+     * @return string
      */
     public function getLastName()
     {
@@ -98,15 +119,23 @@ class Visitor
     }
 
     /**
-     * @param mixed $lastName
+     * Set birthday
+     *
+     * @param \DateTime $birthday
+     *
+     * @return Visitor
      */
-    public function setLastName($lastName)
+    public function setBirthday($birthday)
     {
-        $this->lastName = $lastName;
+        $this->birthday = $birthday;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * Get birthday
+     *
+     * @return \DateTime
      */
     public function getBirthday()
     {
@@ -114,15 +143,23 @@ class Visitor
     }
 
     /**
-     * @param mixed $birthday
+     * Set reduce
+     *
+     * @param boolean $reduce
+     *
+     * @return Visitor
      */
-    public function setBirthday($birthday)
+    public function setReduce($reduce)
     {
-        $this->birthday = $birthday;
+        $this->reduce = $reduce;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * Get reduce
+     *
+     * @return boolean
      */
     public function getReduce()
     {
@@ -130,26 +167,26 @@ class Visitor
     }
 
     /**
-     * @param mixed $reduce
+     * Set booking
+     *
+     * @param \AppBundle\Entity\Booking $booking
+     *
+     * @return Visitor
      */
-    public function setReduce($reduce)
+    public function setBooking(\AppBundle\Entity\Booking $booking = null)
     {
-        $this->reduce = $reduce;
+        $this->booking = $booking;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * Get booking
+     *
+     * @return \AppBundle\Entity\Booking
      */
     public function getBooking()
     {
         return $this->booking;
-    }
-
-    /**
-     * @param mixed $booking
-     */
-    public function setBooking($booking)
-    {
-        $this->booking = $booking;
     }
 }
