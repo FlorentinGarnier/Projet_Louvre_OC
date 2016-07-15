@@ -1,7 +1,30 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}AppBundle:Pricing:pricing{% endblock %}
+{% block title %}{{ parent() }} | Récapitulatif{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Pricing:pricing page</h1>
+    <div class="container">
+        <table class="table">
+            <tr>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Tarif</th>
+            </tr>
+            {% for visitor in visitors %}
+                <tr>
+                    <td>
+                        {{ visitor.firstname }}
+                    </td>
+                    <td>
+                        {{ visitor.lastname }}
+                    </td>
+                    <td>
+                        {{ visitor.price }} €
+                    </td>
+                </tr>
+
+            {% endfor %}
+
+        </table>
+    </div>
 {% endblock %}

@@ -10,4 +10,19 @@ namespace AppBundle\Repository;
  */
 class PriceRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findPrice($name){
+        $qb = $this->createQueryBuilder('p')
+            ->select('p.value')
+            ->where('p.name = :name')
+            ->setParameter(':name', $name)
+        ;
+        
+        $result = $qb
+            ->getQuery()
+            ->getSingleResult();
+            
+        ;
+
+        return $result['value'];
+    }
 }

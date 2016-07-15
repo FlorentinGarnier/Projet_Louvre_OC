@@ -11,6 +11,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Visitor
@@ -59,6 +60,12 @@ class Booking
      *
      */
     private $visitors;
+
+    /**
+     * @var
+     * @ORM\Column(type="decimal", name="total_price")
+     */
+    private $totalPrice;
 
 
     public function __construct()
