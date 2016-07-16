@@ -5,11 +5,13 @@
 {% block body %}
     <div class="container">
         <table class="table">
+            <thead>
             <tr>
-            <th>Prénom</th>
-            <th>Nom</th>
-            <th>Tarif</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Tarif</th>
             </tr>
+            </thead>
             {% for visitor in visitors %}
                 <tr>
                     <td>
@@ -24,7 +26,13 @@
                 </tr>
 
             {% endfor %}
-
+            <tfoot>
+            <tr>
+                <th></th>
+                <th>Total</th>
+                <th>{{ booking.totalPrice }} €</th>
+            </tr>
+            </tfoot>
         </table>
     </div>
 {% endblock %}

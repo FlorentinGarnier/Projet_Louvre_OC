@@ -10,26 +10,30 @@ class PricingController extends Controller
 {
     /**
      * @Route("/pricing")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function pricingAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $bookingNb = $request->getSession()->get('booking_nb');
         $visitors = $this->getDoctrine()->getRepository('AppBundle:Visitor')
-            /*
-             * Pour dev
-             * ->findVisitorsByBookingNb($request->getSession()->get('booking_nb'));
-             */
-            ->findVisitorsByBookingNb(52);
+            ->findVisitorsByBookingNb($bookingNb);
 
-        /*
-         * Tarif par visitors
-         */
+            //->findVisitorsByBookingNb(52);
+
+        $booking = $this->getDoctrine()->getRepository('AppBundle:Booking')
+            ->find($bookingNb);
+
 
         $this->get('app.louvrepricing')->calculatePrice($visitors);
-        $this->get('app.louvrepricing')->total($visitors);
-
+        $booking->setTotalPrice($this->get('app.louvrepricing')->total($visitors));
+        $em->persist($booking);
+        $em->flush();
 
         return $this->render('AppBundle:Pricing:pricing.html.twig', array(
             'visitors' => $visitors,
+            'booking' => $booking
         ));
     }
 

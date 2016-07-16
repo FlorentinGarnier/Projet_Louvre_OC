@@ -75,6 +75,15 @@ class LouvrePricing
 
     public function total($visitors){
 
+        $total = '';
+
+        foreach ($visitors as $visitor){
+            $total += $visitor->getPrice();
+
+        }
+
+        return $total;
+
     }
 
     private function foundPrice($name)

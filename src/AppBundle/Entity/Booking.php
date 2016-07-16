@@ -63,7 +63,7 @@ class Booking
 
     /**
      * @var
-     * @ORM\Column(type="decimal", name="total_price")
+     * @ORM\Column(type="decimal", name="total_price", nullable=true)
      */
     private $totalPrice;
 
@@ -214,5 +214,21 @@ class Booking
     public function getVisitors()
     {
         return $this->visitors;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTotalPrice()
+    {
+        return $this->totalPrice;
+    }
+
+    /**
+     * @param mixed $totalPrice
+     */
+    public function setTotalPrice($totalPrice)
+    {
+        $this->totalPrice = $totalPrice;
     }
 }
