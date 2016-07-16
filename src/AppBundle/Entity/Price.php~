@@ -1,0 +1,38 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Price
+ *
+ * @ORM\Table(name="price")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\PriceRepository")
+ */
+class Price
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=65)
+     */
+    private $name;
+
+    /**
+     * @var decimal
+     *
+     * @ORM\Column(name="value", type="decimal")
+     */
+    private $value;
+
+}

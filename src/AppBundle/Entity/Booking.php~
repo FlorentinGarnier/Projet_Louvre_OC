@@ -1,0 +1,71 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Garnier
+ * Date: 12/07/2016
+ * Time: 21:46
+ */
+
+namespace AppBundle\Entity;
+
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Class Visitor
+ * @package AppBundle\Entity
+ * @ORM\Table(name="Booking")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\BookingRepository")
+ */
+class Booking
+{
+    /**
+     * @var
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var
+     * @ORM\Column(type="date")
+     */
+    private $visit_date;
+
+    /**
+     * @var
+     * @ORM\Column(type="datetime")
+     */
+    private $created_date;
+
+    /**
+     * @var
+     * @ORM\Column(type="boolean")
+     */
+    private $half_day;
+
+
+    /**
+     * @var
+     * @ORM\Column(type="string", length=125, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @var int
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Visitor", mappedBy="booking", cascade={"persist"})
+     *
+     */
+    private $visitors;
+
+
+    public function __construct()
+    {
+        $this->visitors = new ArrayCollection();
+        $this->created_date = new \DateTime();
+    }
+
+   
+}

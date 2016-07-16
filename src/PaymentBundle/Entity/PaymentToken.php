@@ -1,5 +1,5 @@
 <?php
-namespace Acme\PaymentBundle\Entity;
+namespace PaymentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Payum\Core\Model\Token;
