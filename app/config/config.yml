@@ -81,5 +81,12 @@ payum:
     gateways:
         stripe:
             factory: stripe_js
-            publishable_key: "%%stripe_publishable_key%"
-            secret_key: "%%stripe_secret_key%"
+            publishable_key: "%stripe_publishable_key%"
+            secret_key: "%stripe_secret_key%"
+
+        paypal:
+            factory: paypal_express_checkout
+            username: "%paypal_username%"
+            password: "%paypal_password%"
+            signature: "%paypal_signature%"
+            sandbox: true
