@@ -11,11 +11,14 @@ use Symfony\Component\HttpFoundation\Request;
 class PaymentController extends Controller
 {
     /**
-     * @Route("/prepare_payment", name="payment_prepare")
+     * @Route("/payment/{gateway}",
+     *     name="prepare_payment",
+     *     requirements={
+     *     "gateway": "paypal|stripe"})
      */
-    public function prepareAction()
+    public function prepareAction(Request $request, $gateway)
     {
-        $gatewayName = 'paypal';
+        $gatewayName = $gateway;
 
         $storage = $this->get('payum')->getStorage('PaymentBundle\Entity\Payment');
 
@@ -37,6 +40,7 @@ class PaymentController extends Controller
 
         return $this->redirect($captureToken->getTargetUrl());
     }
+
 
     /**
      * @param Request $request

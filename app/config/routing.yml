@@ -9,3 +9,24 @@ app:
 
 payum_capture:
     resource: "@PayumBundle/Resources/config/routing/capture.xml"
+
+
+payum_authorize:
+    resource: "@PayumBundle/Resources/config/routing/authorize.xml"
+
+
+payum_payout:
+    resource: "@PayumBundle/Resources/config/routing/payout.xml"
+
+
+payum_sync:
+    resource: "@PayumBundle/Resources/config/routing/sync.xml"
+
+
+payum_notify:
+    resource: "@PayumBundle/Resources/config/routing/notify.xml"
+
+
+payum_refund:
+    resource: "@PayumBundle/Resources/config/routing/refund.xml"
+
