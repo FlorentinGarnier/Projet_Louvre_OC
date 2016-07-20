@@ -18,6 +18,8 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new Payum\Bundle\PayumBundle\PayumBundle(),
             new PaymentBundle\PaymentBundle(),
+            new Endroid\Bundle\QrCodeBundle\EndroidQrCodeBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

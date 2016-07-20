@@ -18,6 +18,7 @@
 
         <input type="submit" class="btn btn-info pull-right" value="Continuer"/>
         {{ form_end(form) }}
+        <img src="{{ qrcode_data_uri('hello world espace', { size: 200, padding: 10}) }}" alt="qrcode">
     </div>
 {% endblock %}
 
