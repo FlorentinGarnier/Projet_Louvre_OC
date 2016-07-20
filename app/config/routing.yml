@@ -1,3 +1,8 @@
+ticket_system:
+    resource: "@TicketSystemBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 payment:
     resource: "@PaymentBundle/Controller/"
     type:     annotation

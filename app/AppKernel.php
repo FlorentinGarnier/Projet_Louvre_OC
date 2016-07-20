@@ -19,7 +19,8 @@ class AppKernel extends Kernel
             new Payum\Bundle\PayumBundle\PayumBundle(),
             new PaymentBundle\PaymentBundle(),
             new Endroid\Bundle\QrCodeBundle\EndroidQrCodeBundle(),
-            new Knp\Bundle\SnappyBundle\KnpSnappyBundle()
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+            new TicketSystemBundle\TicketSystemBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -65,19 +65,16 @@ class PaymentController extends Controller
 
         // or Payum can fetch the model for you while executing a request (Preferred).
         $gateway->execute($status = new GetHumanStatus($token));
-        $payment = $status->getFirstModel();
+        //$payment = $status->getFirstModel();
+
 
         // you have order and payment status
         // so you can do whatever you want for example you can just print status and payment details.
 
-        dump($status->isCanceled());
-        return new JsonResponse(array(
-            'status' => $status->getValue(),
-            'payment' => array(
-                'total_amount' => $payment->getTotalAmount(),
-                'currency_code' => $payment->getCurrencyCode(),
-                'details' => $payment->getDetails(),
-            ),
-        ));
+        if ($status->isCaptured()){
+            return $this->redirectToRoute('ticket');
+        }
+
+        return $this->createAccessDeniedException('Un problème est survenue');
     }
 }

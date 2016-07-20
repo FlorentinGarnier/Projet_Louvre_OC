@@ -18,4 +18,9 @@ class Payment extends BasePayment
      * @var integer $id
      */
     protected $id;
+
+
+    protected $clientId;
+
+
 }
