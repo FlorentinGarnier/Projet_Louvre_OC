@@ -31,7 +31,7 @@ class PricingController extends Controller
         $em->persist($booking);
         $em->flush();
 
-        return $this->render('AppBundle:Pricing:pricing.html.twig', array(
+        return $this->render('AppBundle:pricing:pricing.html.twig', array(
             'visitors' => $visitors,
             'booking' => $booking
         ));

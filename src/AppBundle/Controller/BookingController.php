@@ -31,7 +31,7 @@ class BookingController extends Controller
             return $this->redirectToRoute('app_pricing_pricing');
         }
 
-        return $this->render('AppBundle:Booking:index.html.twig', [
+        return $this->render('AppBundle:booking:index.html.twig', [
             'form' => $form->createView()
         ]);
     }

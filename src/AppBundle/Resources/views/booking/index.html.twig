@@ -5,9 +5,10 @@
 {% block body %}
     <div class="container">
         {{ form_start(form) }}
+        {{ form_errors(form) }}
         {{ form_row(form.visit_date) }}
         {{ form_row(form.half_day) }}
-
+        {{ form_row(form.email) }}
 
         {{ form_row(form.visitors) }}
 

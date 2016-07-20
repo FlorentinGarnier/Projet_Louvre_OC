@@ -11,25 +11,28 @@ use Symfony\Component\HttpFoundation\Request;
 class PaymentController extends Controller
 {
     /**
-     * @Route("/payment/{gateway}",
+     * @Route("/payment/{gatewayName}",
      *     name="prepare_payment",
      *     requirements={
-     *     "gateway": "paypal|stripe"})
+     *     "gatewayName": "paypal|stripe"})
      */
-    public function prepareAction(Request $request, $gateway)
+    public function prepareAction(Request $request, $gatewayName)
     {
-        $gatewayName = $gateway;
+
 
         $storage = $this->get('payum')->getStorage('PaymentBundle\Entity\Payment');
 
+        $booking = $this->getDoctrine()->getRepository('AppBundle:Booking')
+                ->find($request->getSession()
+                ->get('booking_nb'))
+        ;
         $payment = $storage->create();
         $payment->setNumber(uniqid());
         $payment->setCurrencyCode('EUR');
-        $payment->setTotalAmount(123); // 1.23 EUR
-        $payment->setDescription('A description');
-        $payment->setClientId('anId');
-        $payment->setClientEmail('foo@example.com');
-
+        $payment->setTotalAmount($booking->getTotalPrice()*100); // 1.23 EUR
+        $payment->setDescription(json_encode($booking->getVisitors()));
+        $payment->setClientId($booking->getId());
+        $payment->setClientEmail($booking->getEmail());
         $storage->update($payment);
 
         $captureToken = $this->get('payum')->getTokenFactory()->createCaptureToken(
@@ -67,6 +70,7 @@ class PaymentController extends Controller
         // you have order and payment status
         // so you can do whatever you want for example you can just print status and payment details.
 
+        dump($status->isCanceled());
         return new JsonResponse(array(
             'status' => $status->getValue(),
             'payment' => array(

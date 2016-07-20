@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -35,8 +36,10 @@ class BookingType extends AbstractType
                 'entry_type' => VisitorType::class,
                 'allow_add' => true,
                 'allow_delete' => true
-            ]);
+            ])
+            ->add('email', EmailType::class)
         ;
+
     }
 
     public function configureOptions(OptionsResolver $resolver)

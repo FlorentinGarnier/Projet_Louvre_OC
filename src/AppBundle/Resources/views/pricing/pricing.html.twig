@@ -34,5 +34,11 @@
             </tr>
             </tfoot>
         </table>
+        <div>
+            <a href="{{ path('prepare_payment', {'gatewayName': 'stripe'}) }}">Paiement CB </a>
+        </div>
+        <div>
+            <a href="{{ path('prepare_payment', {'gatewayName': 'paypal'}) }}">Paypal </a>
+        </div>
     </div>
 {% endblock %}
