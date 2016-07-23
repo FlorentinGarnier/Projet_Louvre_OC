@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Ticket{% endblock %}</title>
+</head>
+<body>
+<img src="{{ absolute_url(asset('assets/images/logo-louvre.jpg'))  }}" alt="logo du louvre">
+<div class="container">
+    <div id="qrcode">
+        <img src="{{ qrcode_data_uri(ticketNb, {size: 200, padding: 10}) }}" alt="qrCode">
+    </div>
+
+    <div id="identity">
+        <h2>Visiteur</h2>
+        {{ firstName }} {{ lastName }}
+        <h2>Date de visite</h2>
+        {{ visite_date }}
+    </div>
+
+    <div id="ticketNb">
+        {{ ticketNb }}
+    </div>
+
+
+
+</div>
+</body>
+</html>

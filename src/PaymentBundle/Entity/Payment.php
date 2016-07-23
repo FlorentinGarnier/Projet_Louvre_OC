@@ -19,8 +19,30 @@ class Payment extends BasePayment
      */
     protected $id;
 
+    /**
+     * @var
+     *
+     * @ORM\Column(type="integer")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Booking")
+     * @ORM\JoinColumn(name="booking_id", referencedColumnName="id")
+     */
+    protected $booking;
 
-    protected $clientId;
+    /**
+     * @return mixed
+     */
+    public function getBooking()
+    {
+        return $this->booking;
+    }
+
+    /**
+     * @param mixed $booking
+     */
+    public function setBooking($booking)
+    {
+        $this->booking = $booking;
+    }
 
 
 }

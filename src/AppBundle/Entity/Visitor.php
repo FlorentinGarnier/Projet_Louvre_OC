@@ -63,6 +63,28 @@ class Visitor
      * @ORM\Column(type="decimal", nullable=true)
      */
     private $price;
+
+    /**
+     * @var
+     * @ORM\Column(name="ticket_nb", type="string", nullable=true))
+     */
+    private $ticketNb;
+
+    /**
+     * @return mixed
+     */
+    public function getTicketNb()
+    {
+        return $this->ticketNb;
+    }
+
+    /**
+     * @param mixed $ticketNb
+     */
+    public function setTicketNb($ticketNb)
+    {
+        $this->ticketNb = $ticketNb;
+    }
   
 
     /**

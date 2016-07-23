@@ -9,7 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 class PricingController extends Controller
 {
     /**
-     * @Route("/pricing")
+     * @Route("/pricing",
+     * name="app_pricing")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -17,15 +18,16 @@ class PricingController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $bookingNb = $request->getSession()->get('booking_nb');
-        $visitors = $this->getDoctrine()->getRepository('AppBundle:Visitor')
-            ->findVisitorsByBookingNb($bookingNb);
+
 
             //->findVisitorsByBookingNb(52);
 
         $booking = $this->getDoctrine()->getRepository('AppBundle:Booking')
             ->find($bookingNb);
-
-
+        //$visitors = $this->getDoctrine()->getRepository('AppBundle:Visitor')
+          //  ->findVisitorsByBookingNb($bookingNb);
+        $visitors = $booking->getVisitors()->containsKey($bookingNb);
+        dump($visitors);
         $this->get('app.louvrepricing')->calculatePrice($visitors);
         $booking->setTotalPrice($this->get('app.louvrepricing')->total($visitors));
         $em->persist($booking);

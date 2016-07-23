@@ -11,7 +11,28 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+    <div class="container" id="flash_message">
+        {% block flash_message %}
+
+            {% for flash_message in app.session.flashBag.get('notice') %}
+
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {{ flash_message }}
+                </div>
+
+            {% endfor %}
+
+            {% for flash_message in app.session.getFlashBag.get('error') %}
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+        {% endblock %}
+    </div>
         {% block body %}{% endblock %}
+
         {% block javascripts %}
             <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
             <script src="{{ asset('assets/jquery/dist/jquery.min.js') }}"></script>
@@ -19,4 +40,5 @@
             <script src="{{ asset('assets/bootstrap/dist/js/bootstrap.min.js') }}"></script>
         {% endblock %}
     </body>
+
 </html>

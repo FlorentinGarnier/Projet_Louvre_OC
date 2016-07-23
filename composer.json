@@ -1,4 +1,5 @@
 {
+    "description": "Web ticketing application for Louvre Museum",
     "name": "garnier/louvre",
     "license": "proprietary",
     "type": "project",

@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class PaymentController extends Controller
 {
@@ -23,15 +24,14 @@ class PaymentController extends Controller
         $storage = $this->get('payum')->getStorage('PaymentBundle\Entity\Payment');
 
         $booking = $this->getDoctrine()->getRepository('AppBundle:Booking')
-                ->find($request->getSession()
-                ->get('booking_nb'))
-        ;
+            ->find($request->getSession()
+                ->get('booking_nb'));
         $payment = $storage->create();
         $payment->setNumber(uniqid());
         $payment->setCurrencyCode('EUR');
-        $payment->setTotalAmount($booking->getTotalPrice()*100); // 1.23 EUR
+        $payment->setTotalAmount($booking->getTotalPrice() * 100); // 1.23 EUR
         $payment->setDescription(json_encode($booking->getVisitors()));
-        $payment->setClientId($booking->getId());
+        $payment->setBooking($booking->getId());
         $payment->setClientEmail($booking->getEmail());
         $storage->update($payment);
 
@@ -71,10 +71,13 @@ class PaymentController extends Controller
         // you have order and payment status
         // so you can do whatever you want for example you can just print status and payment details.
 
-        if ($status->isCaptured()){
-            return $this->redirectToRoute('ticket');
+        if ($status->isCaptured()) {
+            return $this->redirectToRoute('ticket_sendticket');
         }
 
-        return $this->createAccessDeniedException('Un problème est survenue');
+        $this->addFlash('error', 'Nous sommes désolé, le paiement n\'a pas aboutis. Veuillez rééssayer');
+
+        return $this->redirectToRoute('app_pricing');
     }
 }
+

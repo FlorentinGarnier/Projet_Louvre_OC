@@ -12,12 +12,15 @@ use Symfony\Component\HttpFoundation\Request;
 class BookingController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/", name="app_bookink_homepage")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function indexAction(Request $request)
     {
+        if ($request->hasSession()){
+            $request->getSession()->remove('booking_nb');
+        }
         $booking = new Booking();
         $form = $this->createForm(BookingType::class, $booking);
 
@@ -28,7 +31,7 @@ class BookingController extends Controller
             $em->flush();
             $request->getSession()->set('booking_nb', $booking->getId());
 
-            return $this->redirectToRoute('app_pricing_pricing');
+            return $this->redirectToRoute('app_pricing');
         }
 
         return $this->render('AppBundle:booking:index.html.twig', [

@@ -31,21 +31,11 @@ class LouvrePricing
 
 
 
-        //pour le tarif famille
-
-        foreach ($visitors as $k => $visitor) {
-
-            $this->familyName[$k] = strtoupper($visitor->getLastName());
-        }
 
 
-        $visitorsName = array_count_values($this->familyName);
 
-        if (in_array(4, $visitorsName)){
 
-        }
-
-        foreach ($visitors as $k => $visitor) {
+        foreach ($visitors as $visitor) {
 
 
             $age = $visitor->getBirthday()->diff(new \DateTime())->y;
@@ -69,7 +59,6 @@ class LouvrePricing
             }
             $this->em->persist($visitor);
         }
-        dump($this->familyName);
         $this->em->flush();
     }
 

@@ -100,3 +100,14 @@ endroid_qr_code:
     foreground_color: { r: 0, g: 0, b: 0, a: 0 }
     background_color: { r: 255, g: 255, b: 255, a: 0 }
     label_font_size: 16
+
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:     /usr/local/bin/wkhtmltopdf
+        options:    []
+    image:
+        enabled:    false
+        binary:     /usr/local/bin/wkhtmltoimage
+        options:    []
+    temporary_folder: "%kernel.cache_dir%/snappy"
