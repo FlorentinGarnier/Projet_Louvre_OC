@@ -22,7 +22,7 @@ class TicketController extends Controller
 
 
         $tickets = $booking->getVisitors()->getValues();
-        $message = \Swift_Message::newInstance()
+        $message = $this->get('mailer')
             ->setSubject('Musée du Louvre e-Ticket')
             ->setTo($booking->getEmail())
             ->setFrom('booking@louvre.fr')

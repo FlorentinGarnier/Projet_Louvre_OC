@@ -16,7 +16,8 @@ class LouvrePricing
 {
     private $em;
     private $priceRepository;
-    private $familyName;
+    private $visitors;
+    private $isFamily = false;
 
 
     public function __construct(EntityManager $entityManager)
@@ -26,33 +27,62 @@ class LouvrePricing
 
     }
 
-    public function calculatePrice($visitors)
+
+
+    /**
+     * Check if visitors is a family
+     * @return boolean
+     */
+    public function isFamily()
     {
+        if (4 === count($this->visitors)){
+            $familyName = [];
+            $children = null;
+            $adult = null;
+            foreach ($this->visitors as $visitor){
+                $familyName[] = $visitor->getLastName();
+                if ('normal' === $visitor->getPrice()){
+                    $adult++;
+                } elseif ('enfant' === $visitor->getPrice()){
+                    $children++;
+                }
+
+            }
+
+            if (in_array(4,array_count_values($familyName)) && 2 == $children && 2 == $adult){
+                $this->isFamily = true;
+            }
+        } else $this->isFamily = false;
+    }
+
+    /**
+     * Calculate price of booking
+     *
+     * @param $visitors
+     */
+    public function setVisitors($visitors)
+    {
+        $this->visitors = $visitors;
 
 
-
-
-
-
-
-        foreach ($visitors as $visitor) {
+        foreach ($this->visitors as $visitor) {
 
 
             $age = $visitor->getBirthday()->diff(new \DateTime())->y;
             switch ($age) {
                 case $age >= 12 && $age < 60:
-                    $visitor->setPrice($this->foundPrice('normal'));
+                    $visitor->setPrice('normal');
                     break;
                 case $age >= 4 && $age < 12:
-                    $visitor->setPrice($this->foundPrice('enfant'));
+                    $visitor->setPrice('enfant');
                     break;
                 case $age >= 60 :
-                    $visitor->setPrice($this->foundPrice('senior'));
+                    $visitor->setPrice('senior');
                     break;
 
             }
             if ($visitor->getReduce() === true) {
-                $visitor->setPrice($this->foundPrice('reduit'));
+                $visitor->setPrice('reduit');
             }
             if ($age < 4) {
                 $visitor->setPrice(0);
@@ -62,24 +92,51 @@ class LouvrePricing
         $this->em->flush();
     }
 
-    public function total($visitors){
+    /**
+     * Calculate total
+     * @return string
+     */
+    public function total(){
 
         $total = '';
 
-        foreach ($visitors as $visitor){
-            $total += $visitor->getPrice();
+        if (!$this->isFamily){
+            foreach ($this->visitors as $visitor){
+                $visitor->setBill($this->foundPrice($visitor->getPrice()));
+                $total += $visitor->getBill();
 
+            }
+        } else {
+            foreach ($this->visitors as $visitor){
+                $visitor->setPrice('Famille');
+                $visitor->setBill(null);
+                $total = 35;
+
+            }
         }
+
 
         return $total;
 
     }
 
+    /**
+     * Bind price value to the price name
+     * @param $name
+     * @return mixed
+     */
     private function foundPrice($name)
     {
         $price = $this->priceRepository
             ->findPrice($name);
 
+
         return $price;
+    }
+
+
+    private function setIsFamily($isFamily)
+    {
+        $this->isFamily = $isFamily;
     }
 }

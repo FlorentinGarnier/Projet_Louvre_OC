@@ -9,6 +9,7 @@
 namespace AppBundle\Entity;
 
 
+use AppBundle\Entity\Booking;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -52,17 +53,24 @@ class Visitor
     private $reduce = false;
 
     /**
-     * @var int
+     * @var
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Booking", inversedBy="visitors")
      * @ORM\JoinColumn(name="booking_id", referencedColumnName="id", nullable=false)
      */
     private $booking;
 
     /**
-     * @var numeric
-     * @ORM\Column(type="decimal", nullable=true)
+     * Name of price
+     * @var
+     * @ORM\Column(type="string", nullable=true)
      */
     private $price;
+
+    /**
+     * @var
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $bill;
 
     /**
      * @var
@@ -196,11 +204,11 @@ class Visitor
     /**
      * Set booking
      *
-     * @param \AppBundle\Entity\Booking $booking
+     * @param Booking $booking
      *
      * @return Visitor
      */
-    public function setBooking(\AppBundle\Entity\Booking $booking = null)
+    public function setBooking(Booking $booking = null)
     {
         $this->booking = $booking;
 
@@ -210,7 +218,7 @@ class Visitor
     /**
      * Get booking
      *
-     * @return \AppBundle\Entity\Booking
+     * @return Booking
      */
     public function getBooking()
     {
@@ -218,7 +226,7 @@ class Visitor
     }
 
     /**
-     * @return numeric
+     * @return
      */
     public function getPrice()
     {
@@ -226,10 +234,26 @@ class Visitor
     }
 
     /**
-     * @param numeric $price
+     * @param $price
      */
     public function setPrice($price)
     {
         $this->price = $price;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBill()
+    {
+        return $this->bill;
+    }
+
+    /**
+     * @param mixed $bill
+     */
+    public function setBill($bill)
+    {
+        $this->bill = $bill;
     }
 }

@@ -23,9 +23,7 @@ class PaymentController extends Controller
 
         $storage = $this->get('payum')->getStorage('PaymentBundle\Entity\Payment');
 
-        $booking = $this->getDoctrine()->getRepository('AppBundle:Booking')
-            ->find($request->getSession()
-                ->get('booking_nb'));
+        $booking = $this->getDoctrine()->getRepository('AppBundle:Booking')->find($request->getSession()->get('booking_nb'));
         $payment = $storage->create();
         $payment->setNumber(uniqid());
         $payment->setCurrencyCode('EUR');

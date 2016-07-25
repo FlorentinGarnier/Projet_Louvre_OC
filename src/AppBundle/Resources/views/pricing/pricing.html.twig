@@ -10,6 +10,7 @@
                 <th>Prénom</th>
                 <th>Nom</th>
                 <th>Tarif</th>
+                <th>Prix</th>
             </tr>
             </thead>
             {% for visitor in visitors %}
@@ -21,13 +22,17 @@
                         {{ visitor.lastname }}
                     </td>
                     <td>
-                        {{ visitor.price }} €
+                        {{ visitor.price }}
+                    </td>
+                    <td>
+                        {{ visitor.bill }}
                     </td>
                 </tr>
 
             {% endfor %}
             <tfoot>
             <tr>
+                <th></th>
                 <th></th>
                 <th>Total</th>
                 <th>{{ booking.totalPrice }} €</th>
