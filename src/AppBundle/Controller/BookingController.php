@@ -26,12 +26,15 @@ class BookingController extends Controller
 
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($booking);
-            $em->flush();
-            $request->getSession()->set('booking_nb', $booking->getId());
+            if ($this->get('app.datechecking')->isValid($booking->getVisitDate()->getTimestamp())){
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($booking);
+                $em->flush();
+                $request->getSession()->set('booking_nb', $booking->getId());
 
-            return $this->redirectToRoute('app_pricing');
+                return $this->redirectToRoute('app_pricing');
+            }
+
         }
 
         return $this->render('AppBundle:booking:index.html.twig', [

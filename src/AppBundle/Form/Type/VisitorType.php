@@ -9,12 +9,14 @@
 namespace AppBundle\Form\Type;
 
 
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class VisitorType extends AbstractType
 {
@@ -25,6 +27,13 @@ class VisitorType extends AbstractType
             ->add('lastName', TextType::class)
             ->add('birthday', DateType::class, [
                 'widget' => 'single_text',
+                'attr' => ['class' => 'birthday'],
+                'html5' => false,
+                'constraints' => new DateTime([
+                    'message' => 'La date de naissance n\'est pas valide'
+                ]),
+                'years' => range(1900, date('Y')),
+                'label' => 'Date de naissance',
             ])
             ->add('reduce', CheckboxType::class, [
                 'required' => false

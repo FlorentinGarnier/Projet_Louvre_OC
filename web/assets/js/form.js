@@ -4,7 +4,7 @@ Add visitor form on click
 
     $(document).ready(function() {
         // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
-        var $container = $('div#booking_visitors');
+        var $container = $('div.booking_visitors');
 
         // On définit un compteur unique pour nommer les champs qu'on va ajouter dynamiquement
         var index = $container.find(':input').length;
@@ -33,7 +33,8 @@ Add visitor form on click
             // - le texte "__name__label__" qu'il contient par le label du champ
             // - le texte "__name__" qu'il contient par le numéro du champ
             var template = $container.attr('data-prototype')
-                    .replace(/__name__/g,        index)
+                    .replace(/__name__label__/g, 'Visiteur n° ' + (index+1))
+                    .replace(/__name__/g, index)
                 ;
 
 

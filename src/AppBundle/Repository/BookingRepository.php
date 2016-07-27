@@ -13,5 +13,13 @@ use Doctrine\ORM\EntityRepository;
 
 class BookingRepository extends EntityRepository
 {
-    
+    public function countPlacesAt($date){
+        return $this->createQueryBuilder('b')
+            ->select('COUNT(b.visit_date)')
+            ->where('b.visit_date = :date')
+            ->setParameter(':date', $date)
+            ->getQuery()
+            ->getSingleScalarResult()
+            ;
+    }
 }

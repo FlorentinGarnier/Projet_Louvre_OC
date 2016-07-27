@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Endroid\Bundle\QrCodeBundle\EndroidQrCodeBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new TicketSystemBundle\TicketSystemBundle(),
+            new Nomaya\SocialBundle\NomayaSocialBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

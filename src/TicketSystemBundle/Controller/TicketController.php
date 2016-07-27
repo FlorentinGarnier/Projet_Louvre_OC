@@ -22,7 +22,7 @@ class TicketController extends Controller
 
 
         $tickets = $booking->getVisitors()->getValues();
-        $message = $this->get('mailer')
+        $message = \Swift_Message::newInstance()
             ->setSubject('Musée du Louvre e-Ticket')
             ->setTo($booking->getEmail())
             ->setFrom('booking@louvre.fr')
@@ -31,7 +31,7 @@ class TicketController extends Controller
         $em = $this->getDoctrine()->getManager();
         foreach ($tickets as $ticket) {
 
-            $ticketNb = strtolower('tk' . $ticket->getFirstName() . $booking->getVisitDate()->format('Ymd') . uniqid());
+            $ticketNb = mb_strtolower('tk' . $ticket->getFirstName() . $booking->getVisitDate()->format('Ymd') . uniqid());
             $ticket->setTicketNb($ticketNb);
             $em->persist($ticket);
             $this->get('knp_snappy.pdf')->generateFromHtml(
@@ -53,7 +53,7 @@ class TicketController extends Controller
         ;
 
         $this->get('mailer')->send($message);
-        $this->addFlash('notice', 'Vos tickets vous on été envoyé à votre adresse '. $booking->getEmail());
-        return $this->redirectToRoute('app_bookink_homepage');
+
+        return $this->render('@App/pricing/success.html.twig', ['email' => $booking->getEmail()]);
     }
 }

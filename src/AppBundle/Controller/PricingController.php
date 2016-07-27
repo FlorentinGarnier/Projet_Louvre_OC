@@ -24,7 +24,7 @@ class PricingController extends Controller
         $pricing = $this->get('app.louvrepricing');
         $pricing->setVisitors($visitors);
         $pricing->isFamily();
-        $booking->setTotalPrice($this->get('app.louvrepricing')->total($visitors));
+        $booking->setTotalPrice($pricing->total());
         $em->persist($booking);
         $em->flush();
 

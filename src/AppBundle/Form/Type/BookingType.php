@@ -19,6 +19,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class BookingType extends AbstractType
 {
@@ -26,7 +27,12 @@ class BookingType extends AbstractType
     {
         $builder
             ->add('visit_date', DateType::class, [
-                'widget' => 'single_text'
+                'widget' => 'single_text',
+                'attr' => ['class' => 'bookingDate'],
+                'html5' => false,
+                'constraints' => new DateTime([
+                    'message' => 'La date de visite n\'est pas valide'
+                ])
             ])
             ->add('half_day', CheckboxType::class,[
                 'required' => false

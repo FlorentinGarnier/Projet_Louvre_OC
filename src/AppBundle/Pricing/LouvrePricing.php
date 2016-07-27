@@ -9,21 +9,24 @@
 namespace AppBundle\Pricing;
 
 
-use AppBundle\Entity\Visitor;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class LouvrePricing
 {
     private $em;
     private $priceRepository;
+    private $booking;
     private $visitors;
     private $isFamily = false;
 
 
-    public function __construct(EntityManager $entityManager)
+    public function __construct(EntityManager $entityManager, Session $session)
     {
         $this->em = $entityManager;
         $this->priceRepository = $this->em->getRepository('AppBundle:Price');
+        $this->booking = $this->em->getRepository('AppBundle:Booking')->find($session->get('booking_nb'));
+
 
     }
 
@@ -40,7 +43,7 @@ class LouvrePricing
             $children = null;
             $adult = null;
             foreach ($this->visitors as $visitor){
-                $familyName[] = $visitor->getLastName();
+                $familyName[] = mb_strtolower($visitor->getLastName());
                 if ('normal' === $visitor->getPrice()){
                     $adult++;
                 } elseif ('enfant' === $visitor->getPrice()){
@@ -56,7 +59,7 @@ class LouvrePricing
     }
 
     /**
-     * Calculate price of booking
+     * Calculate price of visitor(s) in booking with age
      *
      * @param $visitors
      */
@@ -85,11 +88,11 @@ class LouvrePricing
                 $visitor->setPrice('reduit');
             }
             if ($age < 4) {
-                $visitor->setPrice(0);
+                $visitor->setPrice('gratuit');
             }
             $this->em->persist($visitor);
         }
-        $this->em->flush();
+
     }
 
     /**
@@ -100,9 +103,13 @@ class LouvrePricing
 
         $total = '';
 
-        if (!$this->isFamily){
-            foreach ($this->visitors as $visitor){
-                $visitor->setBill($this->foundPrice($visitor->getPrice()));
+        if (!$this->isFamily) {
+            foreach ($this->visitors as $visitor) {
+                $price = $this->foundPrice($visitor->getPrice());
+                if ($this->booking->getHalfDay()){
+                    $visitor->setBill($price/2);
+                } else $visitor->setBill($price);
+
                 $total += $visitor->getBill();
 
             }
@@ -114,7 +121,6 @@ class LouvrePricing
 
             }
         }
-
 
         return $total;
 
@@ -135,8 +141,4 @@ class LouvrePricing
     }
 
 
-    private function setIsFamily($isFamily)
-    {
-        $this->isFamily = $isFamily;
-    }
 }
