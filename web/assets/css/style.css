@@ -1,0 +1,20 @@
+/**
+ *
+ **/
+
+header{
+    background-image: url('../images/pyramide-louvre-101.jpeg');
+    background-size:cover;
+    height: 130px;
+    margin-bottom:10px;
+}
+
+
+/*
+Visitors form style
+*/
+.boutonFermeture{
+    float: right;
+}
+
+

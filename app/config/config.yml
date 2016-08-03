@@ -81,9 +81,10 @@ payum:
 
     gateways:
         stripe:
-            factory: stripe_js
+            factory: stripe_checkout
             publishable_key: "%stripe_publishable_key%"
             secret_key: "%stripe_secret_key%"
+            #payum.template.obtain_token: "PaymentBundle:Stripe:obtain_token.html.twig"
 
         paypal:
             factory: paypal_express_checkout
@@ -128,19 +129,6 @@ nomaya_social:
             text:           "Tweet"
             via:            "MuseeLouvre"
             tag:            "louvre"
-        googleplus:
-            url:            "http://louvre.fr"
-            locale :        "fr"
-            size :          "medium"
-            annotation :    "bubble"
-            width :         300
-        linkedin:
-            url:            "http://louvre.fr"
-            locale:         "fr_FR"
-            counter:        "right"
-        pinterest:
-            url:            "http://louvre.fr"
     links:
         facebook:           "http://www.facebook.com/museedulouvre"
-        googleplus:         "https://plus.google.com/+MuseeLouvre"
     theme:                  'default' # optional

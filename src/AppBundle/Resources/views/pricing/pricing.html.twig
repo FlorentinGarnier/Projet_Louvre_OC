@@ -25,7 +25,7 @@
                         {{ visitor.price }}
                     </td>
                     <td>
-                        {{ visitor.bill }}
+                        {{ visitor.bill/100 }}
                     </td>
                 </tr>
 
@@ -35,10 +35,14 @@
                 <th></th>
                 <th></th>
                 <th>Total</th>
-                <th>{{ booking.totalPrice }} €</th>
+                <th>{{ booking.totalPrice/100 }} €</th>
             </tr>
             </tfoot>
         </table>
+        <div>
+
+        </div>
+
         <div>
             <a href="{{ path('prepare_payment', {'gatewayName': 'stripe'}) }}">Paiement CB </a>
         </div>

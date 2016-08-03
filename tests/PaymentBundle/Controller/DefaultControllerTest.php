@@ -6,12 +6,23 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class DefaultControllerTest extends WebTestCase
 {
-    public function testIndex()
+    /**
+     * @dataProvider urlProvider
+     */
+    public function testPaymentPageIsSuccessfull($url)
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/');
+        $client->request('GET', $url);
 
-        $this->assertContains('Hello World', $client->getResponse()->getContent());
+        $this->assertTrue($client->getResponse()->isSuccessful());
+    }
+
+    public function urlProvider()
+    {
+        return [
+            ['/payment/paypal'],
+            ['/payment/stripe']
+        ];
     }
 }

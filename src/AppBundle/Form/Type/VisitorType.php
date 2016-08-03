@@ -17,26 +17,57 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\Type;
 
 class VisitorType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName', TextType::class)
-            ->add('lastName', TextType::class)
+            ->add('firstName', TextType::class,[
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Prénom'
+                ],
+                'constraints' => new Length([
+                    'min' => 2,
+                    'max' => 255,
+                    'minMessage' => 'Votre prénom est trop court',
+                    'maxMessage' => 'Votre prénom est trop long'
+                ])
+            ])
+            ->add('lastName', TextType::class,[
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Nom'
+                ],
+                'constraints' => new Length([
+                    'min' => 2,
+                    'max' => 255,
+                    'minMessage' => 'Votre prénom est trop court',
+                    'maxMessage' => 'Votre prénom est trop long'
+                ])
+            ])
             ->add('birthday', DateType::class, [
                 'widget' => 'single_text',
-                'attr' => ['class' => 'birthday'],
-                'html5' => false,
+                'attr' => [
+                    'class' => 'birthday',
+                    'placeholder' => 'Date de naissance'
+                ],
                 'constraints' => new DateTime([
                     'message' => 'La date de naissance n\'est pas valide'
                 ]),
-                'years' => range(1900, date('Y')),
-                'label' => 'Date de naissance',
+                'years' => range(date('Y')-150, date('Y')),
+                'label' => false
             ])
             ->add('reduce', CheckboxType::class, [
-                'required' => false
+                'required' => false,
+                'label' => 'Réduction*',
+                'constraints' => new Type([
+                    'type' => 'bool',
+                    'message' => 'Veuillez cocher convenablement si vous avez une réduction'
+                ])
             ])
         ;
     }

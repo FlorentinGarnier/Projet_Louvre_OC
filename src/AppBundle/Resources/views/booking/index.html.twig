@@ -1,105 +1,60 @@
 {% extends 'base.html.twig' %}
 
 
-{% block title %}{{ parent()}} | Booking {% endblock %}
+{% block title %}{{ parent() }} | Booking {% endblock %}
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('assets/jquery-ui/themes/cupertino/jquery-ui.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
 {% endblock %}
 
 
 {% block body %}
     <div class="container">
-        {{ form_start(form) }}
-        {{ form_errors(form) }}
-        {{ form_row(form.visit_date) }}
-        {{ form_row(form.half_day) }}
-        {{ form_row(form.email) }}
+        <div class="row">
+            <div class="col-sm-12">
 
-        <div class="booking_visitors" data-prototype="{{ form_widget(form.visitors.vars.prototype)|e('html_attr') }}">
+                <h1>Bienvenue sur le service de réservation en ligne du Musée du Louvre </h1>
+            </div>
         </div>
-        {{ form_row(form.visitors) }}
+
+
+        {{ form_start(form) }}
+
+        {{ form_errors(form) }}
+        {{ form_row(form.visit_date, {'attr': {'placeholder': 'Date de visite', 'class': 'form-control'},'label_attr': {'class': 'sr-only'} }) }}
+        {{ form_row(form.email, {'attr': {'placeholder': 'Email', 'class': 'form-control'},'label_attr': {'class': 'sr-only'} }) }}
+        {{ form_row(form.half_day) }}
+        <span id="halfday" class="help-block text-primary"></span>
+
+
+        <div class="booking_visitors"
+             data-prototype="{{ form_widget(form.visitors.vars.prototype)|e }}">
+        </div>
+
+        {{ form_row(form.visitors, {'label_attr': {'class': 'sr-only'}}) }}
 
         <button id="add_form" class="btn btn-default">Add visitor</button>
-
 
 
         <input type="submit" class="btn btn-info pull-right" value="Continuer"/>
         {{ form_end(form) }}
 
     </div>
+
+
+{% endblock %}
+{% block footer %}
+    <div class="container">
+        <em>(*)Tarif étudiant, employé du musée, d’un service du Ministère de la Culture, militaire... Un justificatif
+            vous sera demandé à l'entrée du musée</em>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('assets/jquery-ui/jquery-ui.js') }}"></script>
-    <script src="{{ asset('assets/js/form.js') }}" ></script>
-    <script>
-        $(function () {
-            /*
-             Datepicker booking
-             */
-
-            $('#booking_visit_date').datepicker({
-                monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-                monthNamesShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
-                dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
-                dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
-                dayNamesMin: ['Di', 'Lu', 'Mar', 'Me', 'Je', 'Ve', 'Sa'],
-                weekHeader: 'Sm',
-                firstDay: 1,
-                dateFormat: 'yy-mm-dd',
-                minDate: 0,
-                beforeShowDay: function (date) {
-                    return [!(date.getDay() == 0 ||
-                    date.getDay() == 2 ||
-                    (date.getMonth() == 0 && date.getDate() == 1) ||
-                    (date.getMonth() == 4 && date.getDate() == 1) ||
-                    (date.getMonth() == 4 && date.getDate() == 8) ||
-                    (date.getMonth() == 6 && date.getDate() == 14) ||
-                    (date.getMonth() == 7 && date.getDate() == 15) ||
-                    (date.getMonth() == 10 && date.getDate() == 1) ||
-                    (date.getMonth() == 10 && date.getDate() == 11) ||
-                    (date.getMonth() == 11 && date.getDate() == 25))];
-                }
-            });
-
-            $('.birthday').datepicker({
-                monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-                monthNamesShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
-                dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
-                dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
-                dayNamesMin: ['Di', 'Lu', 'Mar', 'Me', 'Je', 'Ve', 'Sa'],
-                weekHeader: 'Sm',
-                dateFormat: 'yy-mm-dd',
-                changeMonth: true,
-                changeYear: true,
-                yearRange: "-150:+0"
-
-            });
-            /*
-
-             Check of available places
-             */
-            function check(date){
-                $.ajax({
-                    url: "{{ path('app_api_precheckin') }}",
-                    method: "POST",
-                    data: {booking_date: date}
-                }).done(function(message){
-                    if(JSON.parse(message['status']) === 0){
-                        $('#add_form').prop('disabled', true);
-                    }
-                })
-            }
-            $('#add_form').click(function (e) {
-                        e.preventDefault();
-                        check('25-07-2016')
-                    }
-            )
-        })
-
-    </script>
+    <script src="{{ asset('assets/js/form.js') }}"></script>
 
 {% endblock %}

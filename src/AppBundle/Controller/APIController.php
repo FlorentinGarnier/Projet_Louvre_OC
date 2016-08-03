@@ -22,7 +22,7 @@ class APIController extends Controller
 
             $date = new \DateTime($request->get('booking_date'));
             $nbPlace = $this->getDoctrine()->getRepository('AppBundle:Booking')->countPlacesAt($date);
-            if ($nbPlace <= 1000){
+            if ($nbPlace < 1000){
                 $status = 1;
             } else $status = 0;
             return new JsonResponse(['status'=> $status]);

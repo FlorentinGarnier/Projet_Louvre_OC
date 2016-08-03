@@ -54,6 +54,6 @@ class TicketController extends Controller
 
         $this->get('mailer')->send($message);
 
-        return $this->render('@App/pricing/success.html.twig', ['email' => $booking->getEmail()]);
+        return $this->render('AppBundle:pricing:success.html.twig', ['email' => $booking->getEmail()]);
     }
 }

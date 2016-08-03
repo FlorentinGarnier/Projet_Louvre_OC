@@ -27,7 +27,7 @@ class PaymentController extends Controller
         $payment = $storage->create();
         $payment->setNumber(uniqid());
         $payment->setCurrencyCode('EUR');
-        $payment->setTotalAmount($booking->getTotalPrice() * 100); // 1.23 EUR
+        $payment->setTotalAmount($booking->getTotalPrice()); // 1.23 EUR
         $payment->setDescription('Billeterie Musée du Louvre');
         $payment->setBooking($booking->getId());
         $payment->setClientEmail($booking->getEmail());
