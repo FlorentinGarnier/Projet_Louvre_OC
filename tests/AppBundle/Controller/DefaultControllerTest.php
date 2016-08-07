@@ -10,7 +10,7 @@ class DefaultControllerTest extends WebTestCase
     /**
      * @dataProvider urlProvider
      */
-    public function testRoutingIsSuccessfull($url)
+    public function testHomeIsSuccessfull($url)
     {
         $client = static::createClient();
 
@@ -22,9 +22,7 @@ class DefaultControllerTest extends WebTestCase
     public function urlProvider()
     {
         return [
-            ['/'],
-            ['/pricing'],
-            ['']
+            ['/']
         ];
     }
 }

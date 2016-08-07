@@ -79,6 +79,12 @@ class Visitor
     private $ticketNb;
 
     /**
+     * @var
+     * @ORM\Column(type="string")
+     */
+    private $country;
+
+    /**
      * @return mixed
      */
     public function getTicketNb()
@@ -255,5 +261,21 @@ class Visitor
     public function setBill($bill)
     {
         $this->bill = $bill;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param mixed $country
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
     }
 }

@@ -3,9 +3,9 @@
  **/
 
 header{
-    background-image: url('../images/pyramide-louvre-101.jpeg');
+    background-image: url('../images/banniere.jpg');
     background-size:cover;
-    height: 130px;
+    height: 200px;
     margin-bottom:10px;
 }
 
@@ -15,6 +15,13 @@ Visitors form style
 */
 .boutonFermeture{
     float: right;
+}
+
+/*
+Help-block for half day checkbox
+*/
+.help-block{
+    color: #ff0039;
 }
 
 

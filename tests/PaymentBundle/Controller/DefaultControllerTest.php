@@ -9,13 +9,13 @@ class DefaultControllerTest extends WebTestCase
     /**
      * @dataProvider urlProvider
      */
-    public function testPaymentPageIsSuccessfull($url)
+    public function testPaymentPageNotResponseWithoutSession($url)
     {
         $client = static::createClient();
 
         $client->request('GET', $url);
 
-        $this->assertTrue($client->getResponse()->isSuccessful());
+        $this->assertFalse($client->getResponse()->isSuccessful());
     }
 
     public function urlProvider()

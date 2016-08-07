@@ -5,7 +5,7 @@
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('assets/jquery-ui/themes/cupertino/jquery-ui.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+
 
 {% endblock %}
 
@@ -26,7 +26,7 @@
         {{ form_row(form.visit_date, {'attr': {'placeholder': 'Date de visite', 'class': 'form-control'},'label_attr': {'class': 'sr-only'} }) }}
         {{ form_row(form.email, {'attr': {'placeholder': 'Email', 'class': 'form-control'},'label_attr': {'class': 'sr-only'} }) }}
         {{ form_row(form.half_day) }}
-        <span id="halfday" class="help-block text-primary"></span>
+        <span id="halfday" class="help-block"></span>
 
 
         <div class="booking_visitors"
@@ -35,7 +35,7 @@
 
         {{ form_row(form.visitors, {'label_attr': {'class': 'sr-only'}}) }}
 
-        <button id="add_form" class="btn btn-default">Add visitor</button>
+        <button id="add_form" class="btn btn-default">Ajouter un visiteur</button>
 
 
         <input type="submit" class="btn btn-info pull-right" value="Continuer"/>

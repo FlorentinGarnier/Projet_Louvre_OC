@@ -31,7 +31,8 @@ class BookingType extends AbstractType
                 'widget' => 'single_text',
                 'constraints' => new DateTime([
                     'message' => 'La date de visite n\'est pas valide'
-                ])
+                ]),
+                'html5' => false
             ])
             ->add('half_day', CheckboxType::class,[
                 'required' => false,

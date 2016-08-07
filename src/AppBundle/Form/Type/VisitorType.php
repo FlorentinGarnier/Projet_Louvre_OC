@@ -12,6 +12,7 @@ namespace AppBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -59,7 +60,12 @@ class VisitorType extends AbstractType
                     'message' => 'La date de naissance n\'est pas valide'
                 ]),
                 'years' => range(date('Y')-150, date('Y')),
-                'label' => false
+                'label' => false,
+                'html5' => false
+            ])
+            ->add('country', CountryType::class,[
+                'label' => false,
+                'placeholder' => 'Pays'
             ])
             ->add('reduce', CheckboxType::class, [
                 'required' => false,
@@ -69,6 +75,7 @@ class VisitorType extends AbstractType
                     'message' => 'Veuillez cocher convenablement si vous avez une réduction'
                 ])
             ])
+
         ;
     }
 

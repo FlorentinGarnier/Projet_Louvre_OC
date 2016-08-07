@@ -40,7 +40,9 @@ class TicketController extends Controller
                     'visite_date' => $booking->getVisitDate()->format('d-m-Y'),
                     'firstName' => $ticket->getFirstname(),
                     'lastName'  => $ticket->getLastName(),
-                    'half_day' => $booking->getHalfDay()
+                    'half_day' => $booking->getHalfDay(),
+                    'priceName' => $ticket->getPrice(),
+                    'bill' => $ticket->getBill()
                 ]),
                 '/tmp/louvre/' . $ticketNb . '.pdf'
             );

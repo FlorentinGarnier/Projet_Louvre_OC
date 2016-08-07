@@ -5,27 +5,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}Ticket{% endblock %}</title>
+    <link rel="stylesheet" href="{{ absolute_url(asset('assets/bootstrap/dist/css/bootstrap.min.css')) }}">
+    <style>
+        .imageFoot{
+            background-image: url({{ absolute_url(asset('assets/images/fondticket.png')) }});
+            -webkit-background-size: cover;
+            background-size: cover;
+            height: 400px;
+        }
+        .ticket{
+            margin: 150px 0 270px 0;
+        }
+    </style>
 </head>
 <body>
-<img src="{{ absolute_url(asset('assets/images/logo-louvre.jpg'))  }}" alt="logo du louvre">
-<div class="container">
-    <div id="qrcode">
-        <img src="{{ qrcode_data_uri(ticketNb, {size: 200, padding: 10}) }}" alt="qrCode">
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div id="qrcode" class="col-xs-4">
+            <img src="{{ qrcode_data_uri(ticketNb, {size: 200, padding: 10}) }}" alt="qrCode">
+        </div>
+        <div class="col-xs-4 col-xs-offset-4">
+            <img src="{{ absolute_url(asset('assets/images/logo-louvre.jpg')) }}" alt="logo du louvre">
+        </div>
     </div>
 
-    <div id="identity">
-        <h2>Visiteur</h2>
-        {{ firstName }} {{ lastName }}
-        <h2>Date de visite</h2>
-        {{ visite_date }}
+    <div class="col-row ticket">
+        <div class="col-xs-9">
+            <h1>Ticket {{ priceName }} {% if half_day %}
+                    <small>Demi-journée</small> {% endif %}</h1>
+            <ul class="list-unstyled">
+                <li><b>Nom: </b>{{ firstName }} {{ lastName }}</li>
+                <li><b>Prix :</b> {{ bill/100 }} €</li>
+                <li><b>Date de visite: </b>{{ visite_date }}</li>
+                <li><b>Numéro de ticket: </b>{{ ticketNb }}</li>
+            </ul>
+        </div>
     </div>
 
-    <div id="ticketNb">
-        {{ ticketNb }}
+    <div class="row">
+        <div class="imageFoot col-xs-12"></div>
     </div>
-
-
 
 </div>
+<script src="{{ absolute_url(asset('assets/jquery/dist/jquery.min.js')) }}"></script>
+<script src="{{ absolute_url(asset('assets/bootstrap/dist/js/bootstrap.min.js')) }}"></script>
 </body>
 </html>
