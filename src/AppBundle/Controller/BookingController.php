@@ -31,7 +31,7 @@ class BookingController extends Controller
             $visitDate = $booking->getVisitDate();
             $dateChecking = $this->get('app.datechecking');
             if ($visitDate->format('y-m-d') == $actualTime->format('y-m-d') && $actualTime->format('h') >= 14){
-                dump("c'est l'après midi");
+                $this->addFlash('error', 'La date de réservation n\'est pas valide');
             }
             if ($dateChecking->isValid($visitDate->getTimestamp())){
                 $em = $this->getDoctrine()->getManager();
