@@ -155,7 +155,7 @@ Add visitor form on click
 
         $('#add_form').click(function (e) {
                 e.preventDefault();
-                check('25-07-2016')
+                check('25-07-2016') //TODO
             }
         )
 

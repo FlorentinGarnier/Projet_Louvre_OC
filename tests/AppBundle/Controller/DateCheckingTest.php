@@ -14,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class DateCheckingTest extends WebTestCase
 {
+    private $DATE = '25-09-2020';
     /**
      * @param $ts
      * @dataProvider tsProvider
@@ -31,8 +32,8 @@ class DateCheckingTest extends WebTestCase
     public function testDateCheckingReturnTrue()
     {
         $dateChecking =new DateChecking();
-        $year = date('Y')+1;
-        $this->assertTrue($dateChecking->isValid(strtotime('25-09-'. $year)));
+
+        $this->assertTrue($dateChecking->isValid(strtotime($this->DATE)));
 
     }
 

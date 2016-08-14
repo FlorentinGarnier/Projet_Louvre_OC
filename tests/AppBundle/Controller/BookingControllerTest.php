@@ -7,22 +7,47 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 class BookingControllerTest extends WebTestCase
 {
 
-    /**
-     * @dataProvider urlProvider
-     */
-    public function testHomeIsSuccessfull($url)
+
+    protected $client;
+    protected $form;
+    protected $crawler;
+
+    protected function setUp()
     {
-        $client = static::createClient();
+        $this->client = static::createClient();
+        $this->crawler = $this->client->request('GET', '/');
+        $this->form = $this->crawler->selectButton('Continuer')->form();
+//        $this->form['booking[visitors][0][firstName]'] = 'florentin';
+//        $this->form['lastName'] = 'garnier';
+//        $this->form['birthday'] = '1985-11-02';
+//        $this->form['country'] = 'FR';
+//        $this->form['email'] = 'garnier.florentin@gmail.com';
 
-        $client->request('GET', $url);
-
-        $this->assertTrue($client->getResponse()->isSuccessful());
     }
 
-    public function urlProvider()
+    public function testHomePageHasGoodResponse()
     {
-        return [
-            ['/']
-        ];
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+
+        $this->assertContains('<title>Musée du Louvre | Booking </title>',
+            $this->client->getResponse()->getContent());
     }
+
+    public function testPastDateReturnAFlashMessage()
+    {
+        $this->form['booking[visit_date]'] = '2000-01-01';
+        $this->crawler = $this->client->submit($this->form);
+        $this->assertContains('La date de réservation n&#039;est pas valide',
+            $this->client->getResponse()->getContent());
+    }
+
+    public function testDateIsHoliday()
+    {
+        $this->form['booking[visit_date]'] = '2020-08-15';
+        $this->crawler = $this->client->submit($this->form);
+        $this->assertContains('La date de réservation n&#039;est pas valide',
+            $this->client->getResponse()->getContent());
+    }
+
 }

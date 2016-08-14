@@ -19,9 +19,11 @@ class BookingController extends Controller
      */
     public function indexAction(Request $request)
     {
+        //Annulation de la commande en cours si retour sur homepage
         if ($request->hasSession()){
             $request->getSession()->remove('booking_nb');
         }
+
         $booking = new Booking();
         $form = $this->createForm(BookingType::class, $booking);
 
