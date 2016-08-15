@@ -10,7 +10,7 @@ namespace tests\AppBundle\Controller;
 
 
 use AppBundle\DateChecking\DateChecking;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Bundle\FrameworkBundle\Tests\Functional\WebTestCase;
 
 class DateCheckingTest extends WebTestCase
 {

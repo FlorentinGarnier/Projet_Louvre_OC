@@ -2,7 +2,8 @@
 
 namespace Tests\AppBundle\Controller;
 
-use AppBundle\Entity\Booking;
+
+
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class APIControllerTest extends WebTestCase
