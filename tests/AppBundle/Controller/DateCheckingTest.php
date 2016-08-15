@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Tests\Functional\WebTestCase;
 
 class DateCheckingTest extends WebTestCase
 {
-    private $DATE = '25-09-2020';
+    const DATE = '25-09-2020';
     /**
      * @param $ts
      * @dataProvider tsProvider
@@ -33,7 +33,7 @@ class DateCheckingTest extends WebTestCase
     {
         $dateChecking =new DateChecking();
 
-        $this->assertTrue($dateChecking->isValid(strtotime($this->DATE)));
+        $this->assertTrue($dateChecking->isValid(strtotime(self::DATE)));
 
     }
 
