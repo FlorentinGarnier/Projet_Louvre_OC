@@ -6,7 +6,7 @@
  * Time: 19:50
  */
 
-namespace tests\AppBundle\Controller;
+namespace tests\AppBundle\Services;
 
 
 use AppBundle\DateChecking\DateChecking;

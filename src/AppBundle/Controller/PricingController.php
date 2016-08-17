@@ -20,6 +20,7 @@ class PricingController extends Controller
         $em = $this->getDoctrine()->getManager();
         $bookingNb = $request->getSession()->get('booking_nb');
         $booking = $this->getDoctrine()->getRepository('AppBundle:Booking')->find($bookingNb);
+        dump($booking->getVisitors());
         $visitors = $booking->getVisitors()->getValues($bookingNb);
         $pricing = $this->get('app.louvrepricing');
         $pricing->setVisitors($visitors);

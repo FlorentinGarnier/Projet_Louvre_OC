@@ -16,6 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 class VisitorTest extends WebTestCase
 {
     protected $visitor;
+    private $id = 1234;
 
     protected function setUp()
     {
@@ -45,6 +46,7 @@ class VisitorTest extends WebTestCase
         $this->visitor->setBill($gauge);
         $this->visitor->setTicketNb($gauge);
         $this->visitor->setCountry($gauge);
+
 
         $this->assertContains($gauge, [$this->visitor->getFirstName()]);
         $this->assertContains($gauge, [$this->visitor->getLastName()]);

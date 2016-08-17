@@ -8,10 +8,6 @@
 
 namespace AppBundle\DateChecking;
 
-
-use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\Routing\Router;
-
 class DateChecking
 {
 
@@ -31,17 +27,23 @@ class DateChecking
         $today = new \DateTime();
         $todayTs = $today->getTimestamp();
 
+        // Check if it's after 2PM
+        if ((date('Y-m-d',$ts) == date('Y-m-d',$todayTs)) && ($today->format('h') >= 02)) return false;
+
         //check if the day is yesterday
         if ($ts-($todayTs - 86400) < 0) return false;
 
+        //check if the day is a musuem holiday
         $dm = date($format, $ts);
         if (date('D', $ts) ==='Tue' || date('D', $ts) === 'Sun') return false;
         if (in_array($dm, $fixed_holidays)) return false;
 
+        //check date for christian holiday
         $easter = easter_date(date('Y', $ts));
         if (date($format, $easter + 86400) == $dm) return false;
         if (date($format, $easter + 3369600) == $dm) return false;
         if (date($format, $easter + 4320000) == $dm) return false;
+
 
 
         return true;
