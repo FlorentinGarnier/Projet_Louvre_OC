@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use Payum\Core\Request\GetHumanStatus;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,8 +43,8 @@ class TicketController extends Controller
 
     /**
      * @param Request $request
-     * @return JsonResponse
      * @Route("/done", name="payment_done")
+     * @return mixed
      */
     public function doneAction(Request $request)
     {
@@ -51,20 +52,7 @@ class TicketController extends Controller
 
         $gateway = $this->get('payum')->getGateway($token->getGatewayName());
 
-        // you can invalidate the token. The url could not be requested any more.
-        // $this->get('payum')->getHttpRequestVerifier()->invalidate($token);
-
-        // Once you have token you can get the model from the storage directly.
-        //$identity = $token->getDetails();
-        //$payment = $payum->getStorage($identity->getClass())->find($identity);
-
-        // or Payum can fetch the model for you while executing a request (Preferred).
         $gateway->execute($status = new GetHumanStatus($token));
-        //$payment = $status->getFirstModel();
-
-
-        // you have order and payment status
-        // so you can do whatever you want for example you can just print status and payment details.
 
         if ($status->isCaptured()) {
             return $this->redirectToRoute('ticket_sendticket');
@@ -92,7 +80,15 @@ class TicketController extends Controller
             ->setSubject('Musée du Louvre e-Ticket')
             ->setTo($booking->getEmail())
             ->setFrom('booking@louvre.fr')
-            ->setBody('Hello World!!');
+            ->setBody('
+            Bonjour,
+            
+            Veuillez trouver ci joint vos billets.
+            
+            Le musée du Louvre vous remercie et vous souhaite une agréable visite.
+            
+            --
+            Le service vente en ligne du musée du Louvre.');
 
         $em = $this->getDoctrine()->getManager();
         foreach ($tickets as $ticket) {

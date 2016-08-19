@@ -2,36 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a61e5685-230a-4f58-a435-7f5efaf8c024" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/AppBundle/Entity/PaymentTest.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/PricingController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/PaymentBundle/Controller/PaymentController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/PaymentBundle/PaymentBundle.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/PaymentBundle/Resources/config/services.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/TicketSystemBundle/Resources/config/services.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/TicketSystemBundle/Resources/views/Default/index.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/TicketSystemBundle/TicketSystemBundle.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/AppBundle/Controller/PricingTest.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/AppBundle/Services/DateCheckingTest.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/PaymentBundle/Controller/DefaultControllerTest.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/TicketSystemBundle/Controller/DefaultControllerTest.php" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/PaymentBundle/Entity/Payment.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Payment.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/PaymentBundle/Entity/PaymentToken.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/PaymentToken.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/PaymentBundle/Resources/views/Stripe/obtain_token.html.twig" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/views/Stripe/obtain_token.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/TicketSystemBundle/Controller/TicketController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/TicketController.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/TicketSystemBundle/Resources/views/Ticket/ticket.html.twig" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/views/Ticket/ticket.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/AppKernel.php" afterPath="$PROJECT_DIR$/app/AppKernel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/routing.yml" afterPath="$PROJECT_DIR$/app/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/APIController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/APIController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/BookingController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/BookingController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/DataFixtures/ORM/LoadPrice.php" afterPath="$PROJECT_DIR$/src/AppBundle/DataFixtures/ORM/LoadPrice.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/DateChecking/DateChecking.php" afterPath="$PROJECT_DIR$/src/AppBundle/DateChecking/DateChecking.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Visitor.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Visitor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Pricing/LouvrePricing.php" afterPath="$PROJECT_DIR$/src/AppBundle/Pricing/LouvrePricing.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Repository/VisitorRepository.php" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/VisitorRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/TicketController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/TicketController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/AppBundle/Controller/BookingControllerTest.php" afterPath="$PROJECT_DIR$/tests/AppBundle/Controller/BookingControllerTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/AppBundle/Entity/PriceTest.php" afterPath="$PROJECT_DIR$/tests/AppBundle/Entity/PriceTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/AppBundle/Entity/BookingTest.php" afterPath="$PROJECT_DIR$/tests/AppBundle/Entity/BookingTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/AppBundle/Entity/VisitorTest.php" afterPath="$PROJECT_DIR$/tests/AppBundle/Entity/VisitorTest.php" />
     </list>
     <list id="75f8adde-f852-4865-b845-a2adb5be3aec" name="New changelist" comment="" />
     <ignored path="louvre.iws" />
@@ -53,11 +28,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BookingControllerTest.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="APIController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/APIController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <folding>
+                <element signature="e#40#97#0#PHP" expanded="true" />
+                <element signature="e#662#681#1#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BookingControllerTest.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/AppBundle/Controller/BookingControllerTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="508">
-              <caret line="153" column="56" selection-start-line="153" selection-start-column="56" selection-end-line="153" selection-end-column="56" />
+            <state relative-caret-position="2203">
+              <caret line="239" column="36" selection-start-line="239" selection-start-column="36" selection-end-line="239" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -75,14 +63,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TicketController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TicketController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/TicketController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
+            <state relative-caret-position="178">
+              <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
               <folding>
-                <element signature="e#40#97#0#PHP" expanded="true" />
-                <element signature="e#3679#3714#0#PHP" expanded="true" />
+                <element signature="e#40#78#0#PHP" expanded="true" />
+                <element signature="e#3315#3350#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -91,8 +79,8 @@
       <file leaf-file-name="VisitorTest.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/AppBundle/Entity/VisitorTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="780">
-              <caret line="64" column="5" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
+            <state relative-caret-position="643">
+              <caret line="68" column="32" selection-start-line="68" selection-start-column="32" selection-end-line="68" selection-end-column="32" />
               <folding>
                 <element signature="e#127#156#0#PHP" expanded="true" />
               </folding>
@@ -125,8 +113,8 @@
       <file leaf-file-name="BookingTest.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/AppBundle/Entity/BookingTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="34" column="86" selection-start-line="34" selection-start-column="86" selection-end-line="34" selection-end-column="86" />
+            <state relative-caret-position="733">
+              <caret line="75" column="38" selection-start-line="75" selection-start-column="38" selection-end-line="75" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -174,10 +162,8 @@
         <option value="$PROJECT_DIR$/tests/AppBundle/Controller/DefaultControllerTest.php" />
         <option value="$PROJECT_DIR$/web/assets/js/form.js" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/Type/BookingType.php" />
-        <option value="$PROJECT_DIR$/tests/AppBundle/Entity/BookingTest.php" />
         <option value="$PROJECT_DIR$/tests/AppBundle/Controller/DateCheckingTest.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/pricing/pricing.html.twig" />
-        <option value="$PROJECT_DIR$/tests/AppBundle/Entity/VisitorTest.php" />
         <option value="$PROJECT_DIR$/app/config/config_test.yml" />
         <option value="$PROJECT_DIR$/tests/AppBundle/Controller/APIControllerTest.php" />
         <option value="$PROJECT_DIR$/tests/AppBundle/Services/DateCheckingTest.php" />
@@ -194,12 +180,14 @@
         <option value="$PROJECT_DIR$/app/config/routing.yml" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/src/AppBundle/DateChecking/DateChecking.php" />
-        <option value="$PROJECT_DIR$/tests/AppBundle/Controller/BookingControllerTest.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/PricingController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/BookingController.php" />
         <option value="$PROJECT_DIR$/tests/AppBundle/Entity/PaymentTest.php" />
         <option value="$PROJECT_DIR$/tests/AppBundle/Entity/PriceTest.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/PaymentController.php" />
+        <option value="$PROJECT_DIR$/tests/AppBundle/Controller/BookingControllerTest.php" />
+        <option value="$PROJECT_DIR$/tests/AppBundle/Entity/BookingTest.php" />
+        <option value="$PROJECT_DIR$/tests/AppBundle/Entity/VisitorTest.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/TicketController.php" />
       </list>
     </option>
@@ -278,28 +266,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="AppBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="louvre" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="louvre" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AppBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -458,7 +424,7 @@
       <workItem from="1469041623900" duration="152961000" />
       <workItem from="1471166047475" duration="21558000" />
       <workItem from="1471278333812" duration="5821000" />
-      <workItem from="1471351953584" duration="31373000" />
+      <workItem from="1471351953584" duration="35038000" />
     </task>
     <task id="LOCAL-00001" summary="New logic">
       <created>1468358059178</created>
@@ -614,17 +580,24 @@
       <option name="project" value="LOCAL" />
       <updated>1471450526988</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Refacto">
+      <created>1471618726841</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1471618726841</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="315042000" />
+    <option name="totallyTimeSpent" value="318707000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21387696" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21387696" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -692,7 +665,8 @@
     <MESSAGE value="test CheckDate services" />
     <MESSAGE value="visitor entity test done......" />
     <MESSAGE value="some new test" />
-    <option name="LAST_COMMIT_MESSAGE" value="some new test" />
+    <MESSAGE value="Refacto" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refacto" />
     <option name="PRESELECT_EXISTING_CHANGELIST" value="false" />
   </component>
   <component name="XDebuggerManager">
@@ -988,17 +962,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/APIController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <element signature="e#40#97#0#PHP" expanded="true" />
-            <element signature="e#662#681#1#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/DateChecking/DateChecking.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
@@ -1030,34 +993,6 @@
         <state relative-caret-position="150">
           <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/AppBundle/Entity/BookingTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="34" column="86" selection-start-line="34" selection-start-column="86" selection-end-line="34" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/AppBundle/Entity/VisitorTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="64" column="5" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
-          <folding>
-            <element signature="e#127#156#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/BookingController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="643">
-          <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
-          <folding>
-            <element signature="e#40#69#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1095,22 +1030,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/TicketController.php">
+    <entry file="file://$PROJECT_DIR$/tests/AppBundle/Controller/BookingControllerTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
+        <state relative-caret-position="2203">
+          <caret line="239" column="36" selection-start-line="239" selection-start-column="36" selection-end-line="239" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/AppBundle/Entity/BookingTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="733">
+          <caret line="75" column="38" selection-start-line="75" selection-start-column="38" selection-end-line="75" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/AppBundle/Entity/VisitorTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="643">
+          <caret line="68" column="32" selection-start-line="68" selection-start-column="32" selection-end-line="68" selection-end-column="32" />
           <folding>
-            <element signature="e#40#97#0#PHP" expanded="true" />
-            <element signature="e#3679#3714#0#PHP" expanded="true" />
+            <element signature="e#127#156#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/AppBundle/Controller/BookingControllerTest.php">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/APIController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="508">
-          <caret line="153" column="56" selection-start-line="153" selection-start-column="56" selection-end-line="153" selection-end-column="56" />
-          <folding />
+        <state relative-caret-position="120">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="e#40#97#0#PHP" expanded="true" />
+            <element signature="e#662#681#1#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/BookingController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="643">
+          <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
+          <folding>
+            <element signature="e#40#69#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/TicketController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+          <folding>
+            <element signature="e#40#78#0#PHP" expanded="true" />
+            <element signature="e#3315#3350#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

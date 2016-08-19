@@ -10,6 +10,7 @@ namespace tests\AppBundle\Entity;
 
 
 use AppBundle\Entity\Booking;
+use AppBundle\Entity\Visitor;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
@@ -53,5 +54,25 @@ class BookingTest extends WebTestCase
     {
         $this->booking->setTotalPrice(1600);
         $this->assertTrue(is_numeric($this->booking->getTotalPrice()));
+    }
+
+    public function testRemoveVisitor()
+    {
+        $this->booking->removeVisitor(new Visitor());
+    }
+
+    public function testAddVisitor()
+    {
+        $this->booking->addVisitor(new Visitor());
+    }
+
+    public function testId()
+    {
+        $this->booking->getId();
+    }
+
+    public function testGetVisitors()
+    {
+        $this->booking->getVisitors();
     }
 }

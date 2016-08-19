@@ -205,6 +205,40 @@ class BookingControllerTest extends WebTestCase
 
     }
 
+    public function testPaymentWithStripe()
+    {
+        $this->value['booking']['visitors']['1']['firstName'] = 'Émilie';
+        $this->value['booking']['visitors']['1']['lastName'] = 'garnier';
+        $this->value['booking']['visitors']['1']['birthday'] = '1983-08-25';
+        $this->value['booking']['visitors']['1']['country'] = 'FR';
+
+        $this->value['booking']['visitors']['2']['firstName'] = 'Raphael';
+        $this->value['booking']['visitors']['2']['lastName'] = 'garnier';
+        $this->value['booking']['visitors']['2']['birthday'] = '2008-11-02';
+        $this->value['booking']['visitors']['2']['country'] = 'FR';
+
+        $this->value['booking']['visitors']['3']['firstName'] = 'Mélissa';
+        $this->value['booking']['visitors']['3']['lastName'] = 'garnier';
+        $this->value['booking']['visitors']['3']['birthday'] = '2008-11-02';
+        $this->value['booking']['visitors']['3']['country'] = 'FR';
+        $this->value['booking']['visit_date'] = '2020-08-20';
+        $this->crawler = $this->client->request(
+            $this->form->getMethod(),
+            $this->form->getUri(),
+            $this->value,
+            $this->form->getPhpFiles()
+        );
+
+
+
+        $this->crawler = $this->client->followRedirect();
+        $this->assertContains('35 €',
+            $this->client->getResponse()->getContent());
+
+        $link = $this->crawler->selectLink('Paiement CB')->link();
+
+        $this->client->click($link);
+    }
 
 
 }

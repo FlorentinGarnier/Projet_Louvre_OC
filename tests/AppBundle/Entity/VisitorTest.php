@@ -64,4 +64,9 @@ class VisitorTest extends WebTestCase
         $this->assertInstanceOf(Booking::class, $this->visitor->getBooking());
     }
 
+    public function testGetId()
+    {
+        $this->visitor->getId();
+    }
+
 }
