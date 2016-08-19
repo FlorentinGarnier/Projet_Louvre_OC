@@ -2,8 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
-    - { resource: "@PaymentBundle/Resources/config/services.yml" }
-    - { resource: "@TicketSystemBundle/Resources/config/services.yml" }
+
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -74,17 +73,16 @@ swiftmailer:
 payum:
     security:
         token_storage:
-            PaymentBundle\Entity\PaymentToken: { doctrine: orm }
+            AppBundle\Entity\PaymentToken: { doctrine: orm }
 
     storages:
-        PaymentBundle\Entity\Payment: { doctrine: orm }
+        AppBundle\Entity\Payment: { doctrine: orm }
 
     gateways:
         stripe:
             factory: stripe_checkout
             publishable_key: "%stripe_publishable_key%"
             secret_key: "%stripe_secret_key%"
-            #payum.template.obtain_token: "PaymentBundle:Stripe:obtain_token.html.twig"
 
         paypal:
             factory: paypal_express_checkout

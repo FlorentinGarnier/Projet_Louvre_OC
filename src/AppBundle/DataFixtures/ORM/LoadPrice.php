@@ -11,6 +11,7 @@ namespace AppBundle\DataFixtures\ORM;
 
 use AppBundle\Entity\Booking;
 use AppBundle\Entity\Price;
+use AppBundle\Entity\Visitor;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -18,6 +19,7 @@ class LoadPrice implements FixtureInterface
 {
     public function load(ObjectManager $manager)
     {
+
         //Fixtures for price
 
         $val = [

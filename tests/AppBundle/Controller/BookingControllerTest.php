@@ -93,4 +93,118 @@ class BookingControllerTest extends WebTestCase
         }
     }
 
+    public function testIfGoodPricingIsDisplayed()
+    {
+        $this->value['booking']['visit_date'] = '2020-08-20';
+        $this->crawler = $this->client->request(
+            $this->form->getMethod(),
+            $this->form->getUri(),
+            $this->value,
+            $this->form->getPhpFiles()
+        );
+
+        $this->crawler = $this->client->followRedirect();
+        $this->assertContains('16 €',
+            $this->client->getResponse()->getContent());
+    }
+
+    public function testHalfDayPricing()
+    {
+        $this->value['booking']['visit_date'] = '2020-08-20';
+        $this->value['booking']['half_day'] = '1';
+        $this->crawler = $this->client->request(
+            $this->form->getMethod(),
+            $this->form->getUri(),
+            $this->value,
+            $this->form->getPhpFiles()
+        );
+
+        $this->crawler = $this->client->followRedirect();
+        $this->assertContains('8 €',
+            $this->client->getResponse()->getContent());
+    }
+
+    public function testFamilyPricing()
+    {   $this->value['booking']['visitors']['1']['firstName'] = 'Émilie';
+        $this->value['booking']['visitors']['1']['lastName'] = 'garnier';
+        $this->value['booking']['visitors']['1']['birthday'] = '1983-08-25';
+        $this->value['booking']['visitors']['1']['country'] = 'FR';
+
+        $this->value['booking']['visitors']['2']['firstName'] = 'Raphael';
+        $this->value['booking']['visitors']['2']['lastName'] = 'garnier';
+        $this->value['booking']['visitors']['2']['birthday'] = '2008-11-02';
+        $this->value['booking']['visitors']['2']['country'] = 'FR';
+
+        $this->value['booking']['visitors']['3']['firstName'] = 'Mélissa';
+        $this->value['booking']['visitors']['3']['lastName'] = 'garnier';
+        $this->value['booking']['visitors']['3']['birthday'] = '2008-11-02';
+        $this->value['booking']['visitors']['3']['country'] = 'FR';
+        $this->value['booking']['visit_date'] = '2020-08-20';
+        $this->crawler = $this->client->request(
+            $this->form->getMethod(),
+            $this->form->getUri(),
+            $this->value,
+            $this->form->getPhpFiles()
+        );
+
+
+
+        $this->crawler = $this->client->followRedirect();
+        $this->assertContains('35 €',
+            $this->client->getResponse()->getContent());
+    }
+
+    public function testSeniorPrice()
+    {
+        $this->value['booking']['visitors']['0']['birthday'] = '1950-11-02';
+        $this->value['booking']['visit_date'] = '2020-08-20';
+        $this->crawler = $this->client->request(
+            $this->form->getMethod(),
+            $this->form->getUri(),
+            $this->value,
+            $this->form->getPhpFiles()
+        );
+
+
+        $this->crawler = $this->client->followRedirect();
+        $this->assertContains('12 €',
+            $this->client->getResponse()->getContent());
+
+    }
+
+    public function testReducePrice()
+    {
+        $this->value['booking']['visit_date'] = '2020-08-20';
+        $this->value['booking']['visitors']['0']['reduce'] = '1';
+        $this->crawler = $this->client->request(
+            $this->form->getMethod(),
+            $this->form->getUri(),
+            $this->value,
+            $this->form->getPhpFiles()
+        );
+
+        $this->crawler = $this->client->followRedirect();
+        $this->assertContains('10 €',
+            $this->client->getResponse()->getContent());
+    }
+
+    public function testLessThan4YearsPriceReturn0Euros()
+    {
+        $this->value['booking']['visitors']['0']['birthday'] = '2014-11-02';
+        $this->value['booking']['visit_date'] = '2020-08-20';
+        $this->crawler = $this->client->request(
+            $this->form->getMethod(),
+            $this->form->getUri(),
+            $this->value,
+            $this->form->getPhpFiles()
+        );
+
+        $this->crawler = $this->client->followRedirect();
+        $this->assertContains('0 €',
+            $this->client->getResponse()->getContent());
+
+    }
+
+
+
 }

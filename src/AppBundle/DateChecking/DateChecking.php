@@ -11,6 +11,7 @@ namespace AppBundle\DateChecking;
 class DateChecking
 {
 
+
     /**
      * Check if date is an holliday for the museum
      * Take a timestamp in parameter
@@ -18,7 +19,7 @@ class DateChecking
      * @param $ts
      * @return bool
      */
-    public function isValid($ts)
+    public function isValid($ts, $halfDay)
     {
         // Licence : Creative Commons (BY)
         // By Webpulser - http://goo.gl/76t31
@@ -27,8 +28,12 @@ class DateChecking
         $today = new \DateTime();
         $todayTs = $today->getTimestamp();
 
-        // Check if it's after 2PM
-        if ((date('Y-m-d',$ts) == date('Y-m-d',$todayTs)) && ($today->format('h') >= 02)) return false;
+        // Check if the visit date is today and not possibility to proceed for a day ticket after 2 PM
+        if ($halfDay == false){
+
+            if ((date('Y-m-d',$ts) == date('Y-m-d',$todayTs)) && ($today->format('h') >= 02)) return false;
+
+        }
 
         //check if the day is yesterday
         if ($ts-($todayTs - 86400) < 0) return false;
@@ -48,5 +53,7 @@ class DateChecking
 
         return true;
     }
+
+
 }
 

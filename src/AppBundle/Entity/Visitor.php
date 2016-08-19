@@ -9,7 +9,6 @@
 namespace AppBundle\Entity;
 
 
-use AppBundle\Entity\Booking;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

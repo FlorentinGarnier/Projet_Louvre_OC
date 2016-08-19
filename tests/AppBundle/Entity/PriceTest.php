@@ -23,6 +23,7 @@ class PriceTest extends WebTestCase
 
     public function testNameIsString()
     {
+        $this->price->getId();
         $this->price->setName('wizzzz');
         $this->assertTrue(is_string($this->price->getName()));
     }

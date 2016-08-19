@@ -17,10 +17,8 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new Payum\Bundle\PayumBundle\PayumBundle(),
-            new PaymentBundle\PaymentBundle(),
             new Endroid\Bundle\QrCodeBundle\EndroidQrCodeBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
-            new TicketSystemBundle\TicketSystemBundle(),
             new Nomaya\SocialBundle\NomayaSocialBundle()
         ];
 

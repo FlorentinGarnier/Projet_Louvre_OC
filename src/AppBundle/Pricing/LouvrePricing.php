@@ -67,8 +67,6 @@ class LouvrePricing
     {
         $this->visitors = $visitors;
 
-        dump($this->visitors);
-
         foreach ($this->visitors as $visitor) {
 
             $age = $visitor->getBirthday()->diff(new \DateTime())->y;
