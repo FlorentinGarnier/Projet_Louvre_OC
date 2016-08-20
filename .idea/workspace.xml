@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a61e5685-230a-4f58-a435-7f5efaf8c024" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.travis.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.travis.yml" afterPath="$PROJECT_DIR$/.travis.yml" />
     </list>
     <list id="75f8adde-f852-4865-b845-a2adb5be3aec" name="New changelist" comment="" />
     <ignored path="louvre.iws" />
@@ -94,8 +94,8 @@
       <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+            <state relative-caret-position="120">
+              <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -460,7 +460,7 @@
       <workItem from="1471166047475" duration="21558000" />
       <workItem from="1471278333812" duration="5821000" />
       <workItem from="1471351953584" duration="35038000" />
-      <workItem from="1471726757256" duration="984000" />
+      <workItem from="1471726757256" duration="1255000" />
     </task>
     <task id="LOCAL-00001" summary="New logic">
       <created>1468358059178</created>
@@ -623,11 +623,18 @@
       <option name="project" value="LOCAL" />
       <updated>1471618726841</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="add travis">
+      <created>1471730897923</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1471730897923</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="319691000" />
+    <option name="totallyTimeSpent" value="319962000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -702,7 +709,8 @@
     <MESSAGE value="visitor entity test done......" />
     <MESSAGE value="some new test" />
     <MESSAGE value="Refacto" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refacto" />
+    <MESSAGE value="add travis" />
+    <option name="LAST_COMMIT_MESSAGE" value="add travis" />
     <option name="PRESELECT_EXISTING_CHANGELIST" value="false" />
   </component>
   <component name="XDebuggerManager">
@@ -993,8 +1001,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+        <state relative-caret-position="120">
+          <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
           <folding />
         </state>
       </provider>
