@@ -11,7 +11,9 @@ php:
 services:
     - mysql
 
-before_install: export SYMFONY_ENV=prod
+before_install:
+    - export SYMFONY_ENV=prod
+    - mysql -e 'create database symfony;' -u root
 
 install:
     - composer install --no-dev --optimize-autoloader
@@ -22,7 +24,7 @@ matrix:
         - php: hhvm
 
 before_script:
-    - mysql -e 'create database myapp_test;' -u root
+
     - cp app/config/parameters.yml.dist app/config/parameters.yml
     - php bin/console doctrine:database:create --env=test
     - php bin/console doctrine:schema:create --env=test
