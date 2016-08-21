@@ -4,10 +4,44 @@
     <div class="container">
 
 
-    <div class="well">
-        Le musée du Louvre vous remercie pour votre confiance et vous souhaite une agréable visite. Vos tickets vous seront transmis prochainement par mail à l'adresse <strong>{{ email }}</strong>
+        <div class="well">
+            Le musée du Louvre vous remercie pour votre confiance et vous souhaite une agréable visite. Vos tickets vous
+            seront transmis prochainement par mail à l'adresse <strong>{{ email }}</strong>
 
+        </div>
+        <div class="row">
+            <div class="text-center">
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.louvre.fr"
+                   data-text="Je vais visiter le Louvre. Qui me suis?" data-via="museelouvre"
+                   data-hashtags="culture">Tweet</a>
+
+                <div class="fb-like" data-href="http://www.louvre.fr" data-layout="standard" data-action="like"
+                     data-show-faces="true" data-share="true"></div>
+            </div>
+        </div>
     </div>
-    {{ socialButtons() }}
-    </div>
+
+    <div id="fb-root"></div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>!function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+            if (!d.getElementById(id)) {
+                js = d.createElement(s);
+                js.id = id;
+                js.src = p + '://platform.twitter.com/widgets.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            }
+        }(document, 'script', 'twitter-wjs');</script>
+    <script>(function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.7";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
 {% endblock %}

@@ -110,23 +110,3 @@ knp_snappy:
         binary:     /usr/local/bin/wkhtmltoimage
         options:    []
     temporary_folder: "%kernel.cache_dir%/snappy"
-
-nomaya_social:
-    buttons:
-        facebook:
-            url:            "http://louvre.fr"
-            locale:         "fr_FR"
-            send:           false
-            width:          300
-            showFaces:      false
-            layout:         "button"
-        twitter:
-            url:            "http://louvre.fr"
-            locale:         "fr"
-            message:        "Je viens de prendre des tickets pour le Louvre, qui me suis?"
-            text:           "Tweet"
-            via:            "MuseeLouvre"
-            tag:            "louvre"
-    links:
-        facebook:           "http://www.facebook.com/museedulouvre"
-    theme:                  'default' # optional
