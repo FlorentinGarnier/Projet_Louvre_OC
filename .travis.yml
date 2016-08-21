@@ -16,7 +16,7 @@ before_install:
     - mysql -e 'create database symfony;' -u root
 
 install:
-    - composer install --no-dev --optimize-autoloader
+    - composer install
 
 matrix:
     allow_failures:
