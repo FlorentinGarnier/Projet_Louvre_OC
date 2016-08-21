@@ -8,6 +8,9 @@ php:
     - hhvm
     - nightly
 
+services:
+    - mysql
+
 before_install: export SYMFONY_ENV=prod
 
 install:
@@ -19,9 +22,11 @@ matrix:
         - php: hhvm
 
 before_script:
+    - mysql -e 'create database myapp_test;' -u root
     - cp app/config/parameters.yml.dist app/config/parameters.yml
     - php bin/console doctrine:database:create --env=test
     - php bin/console doctrine:schema:create --env=test
+    - php bin/console doctrine:fixtures:load
 
 script:
     - phpunit tests
