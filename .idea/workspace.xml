@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a61e5685-230a-4f58-a435-7f5efaf8c024" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/AppBundle/Controller/APIControllerTest.php" afterPath="$PROJECT_DIR$/tests/AppBundle/Controller/APIControllerTest.php" />
     </list>
     <list id="75f8adde-f852-4865-b845-a2adb5be3aec" name="New changelist" comment="" />
     <ignored path="louvre.iws" />
@@ -30,8 +28,8 @@
       <file leaf-file-name="config.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/config/config.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="110" column="40" selection-start-line="110" selection-start-column="40" selection-end-line="110" selection-end-column="40" />
+            <state relative-caret-position="583">
+              <caret line="106" column="29" selection-start-line="106" selection-start-column="29" selection-end-line="106" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -514,7 +512,7 @@
       <workItem from="1471166047475" duration="21558000" />
       <workItem from="1471278333812" duration="5821000" />
       <workItem from="1471351953584" duration="35038000" />
-      <workItem from="1471726757256" duration="9614000" />
+      <workItem from="1471726757256" duration="10830000" />
     </task>
     <task id="LOCAL-00001" summary="New logic">
       <created>1468358059178</created>
@@ -747,11 +745,18 @@
       <option name="project" value="LOCAL" />
       <updated>1471788136020</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="change path of wkhtmltopdf for deplaoyment">
+      <created>1471874379757</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1471874379757</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="328321000" />
+    <option name="totallyTimeSpent" value="329537000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -830,7 +835,8 @@
     <MESSAGE value="add before script for travis" />
     <MESSAGE value="test travis" />
     <MESSAGE value="fix insight" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix insight" />
+    <MESSAGE value="change path of wkhtmltopdf for deplaoyment" />
+    <option name="LAST_COMMIT_MESSAGE" value="change path of wkhtmltopdf for deplaoyment" />
     <option name="PRESELECT_EXISTING_CHANGELIST" value="false" />
   </component>
   <component name="XDebuggerManager">
@@ -1185,8 +1191,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/config.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="110" column="40" selection-start-line="110" selection-start-column="40" selection-end-line="110" selection-end-column="40" />
+        <state relative-caret-position="583">
+          <caret line="106" column="29" selection-start-line="106" selection-start-column="29" selection-end-line="106" selection-end-column="29" />
           <folding />
         </state>
       </provider>
