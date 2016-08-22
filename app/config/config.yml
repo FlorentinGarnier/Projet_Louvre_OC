@@ -104,10 +104,10 @@ endroid_qr_code:
 knp_snappy:
     pdf:
         enabled:    true
-        binary:     /usr/local/bin/wkhtmltopdf
+        binary:     /usr/bin/wkhtmltopdf
         options:    []
     image:
         enabled:    false
-        binary:     /usr/local/bin/wkhtmltoimage
+        binary:     /usr/bin/wkhtmltopdf
         options:    []
     temporary_folder: "%kernel.cache_dir%/snappy"
