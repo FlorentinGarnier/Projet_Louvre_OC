@@ -28,8 +28,8 @@
       <file leaf-file-name="config.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/config/config.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="583">
-              <caret line="106" column="29" selection-start-line="106" selection-start-column="29" selection-end-line="106" selection-end-column="29" />
+            <state relative-caret-position="463">
+              <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -512,7 +512,7 @@
       <workItem from="1471166047475" duration="21558000" />
       <workItem from="1471278333812" duration="5821000" />
       <workItem from="1471351953584" duration="35038000" />
-      <workItem from="1471726757256" duration="10830000" />
+      <workItem from="1471726757256" duration="11156000" />
     </task>
     <task id="LOCAL-00001" summary="New logic">
       <created>1468358059178</created>
@@ -752,11 +752,18 @@
       <option name="project" value="LOCAL" />
       <updated>1471874379757</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="change path of wkhtmltopdf for deplaoyment">
+      <created>1471875748963</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1471875748963</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="329537000" />
+    <option name="totallyTimeSpent" value="329863000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1191,8 +1198,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/config.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="583">
-          <caret line="106" column="29" selection-start-line="106" selection-start-column="29" selection-end-line="106" selection-end-column="29" />
+        <state relative-caret-position="463">
+          <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
           <folding />
         </state>
       </provider>
