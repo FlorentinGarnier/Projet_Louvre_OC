@@ -9,6 +9,10 @@ Add visitor form on click
         // On définit un compteur unique pour nommer les champs qu'on va ajouter dynamiquement
         var index = $container.find(':input').length;
 
+        if ($container.find(':input')) {
+            $()
+        }
+
         // On ajoute un nouveau champ à chaque clic sur le lien d'ajout.
         $('#add_form').click(function(e) {
             addVisitor($container);

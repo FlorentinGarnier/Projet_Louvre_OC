@@ -31,10 +31,11 @@
 
         <div class="booking_visitors"
              data-prototype="{{ form_widget(form.visitors.vars.prototype)|e }}">
-        </div>
 
+        <div class="well">
         {{ form_row(form.visitors, {'label_attr': {'class': 'sr-only'}}) }}
-
+        </div>
+        </div>
         <button id="add_form" class="btn btn-default">Ajouter un visiteur</button>
 
 
