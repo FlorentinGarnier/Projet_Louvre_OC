@@ -36,3 +36,14 @@ swiftmailer:
     transport: gmail
     username:  '%mailer_user%'
     password:  '%mailer_password%'
+
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:     /usr/local/bin/wkhtmltopdf
+        options:    []
+    image:
+        enabled:    false
+        binary:     /usr/bin/local/wkhtmltoimage
+        options:    []
+    temporary_folder: "%kernel.cache_dir%/snappy"
