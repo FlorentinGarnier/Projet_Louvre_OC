@@ -50,16 +50,7 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
-<<<<<<< HEAD
-        # if using pdo_sqlite as your database driver:
-        #   1. add the path in parameters.yml
-        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
-        #   2. Uncomment database_path in parameters.yml.dist
-        #   3. Uncomment next line:
-        #     path:     "%database_path%"
-=======
         server_version: 5.7.13
->>>>>>> 0bf3cb35ee302534e5a02debb1b3c4289b27f0b7
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
