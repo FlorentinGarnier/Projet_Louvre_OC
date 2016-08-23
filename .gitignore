@@ -14,7 +14,6 @@
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
-.idea/*
 *.*~
 /web/config.php
 .idea/

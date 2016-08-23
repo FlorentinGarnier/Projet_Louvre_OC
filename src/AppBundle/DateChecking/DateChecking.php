@@ -29,7 +29,7 @@ class DateChecking
         $todayTs = $today->getTimestamp();
 
         // Check if the visit date is today and not possibility to proceed for a day ticket after 2 PM
-        if ($halfDay == false){
+        if ($halfDay === false){
 
             if ((date('Y-m-d',$ts) == date('Y-m-d',$todayTs)) && ($today->format('h') >= 02)) return false;
 
