@@ -19,6 +19,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Type;
 
 class VisitorType extends AbstractType
@@ -33,9 +34,9 @@ class VisitorType extends AbstractType
                 ],
                 'constraints' => new Length([
                     'min' => 2,
-                    'max' => 255,
+                    'max' => 125,
                     'minMessage' => 'Saisir au moins 2 caractères',
-                    'maxMessage' => 'Saisir moins de 255 caracrères'
+                    'maxMessage' => 'Saisir moins de 125 caracrères'
                 ])
             ])
             ->add('lastName', TextType::class,[
@@ -45,9 +46,9 @@ class VisitorType extends AbstractType
                 ],
                 'constraints' => new Length([
                     'min' => 2,
-                    'max' => 255,
+                    'max' => 125,
                     'minMessage' => 'Saisir au moins 2 caractères',
-                    'maxMessage' => 'Saisir moins de 255 caracrères'
+                    'maxMessage' => 'Saisir moins de 125 caracrères'
                 ])
             ])
             ->add('birthday', DateType::class, [
@@ -57,9 +58,15 @@ class VisitorType extends AbstractType
                     'placeholder' => 'Date de naissance',
                     'readonly' => 'readonly'
                 ],
-                'constraints' => new DateTime([
-                    'message' => 'Saisissez une date valide sous la forme YYYY-MM-JJ'
-                ]),
+                'constraints' => [
+                    new DateTime([
+                        'message' => 'Saisissez une date valide sous la forme YYYY-MM-JJ',
+                        'format' => 'Y-m-d'
+                    ]),
+                    new NotBlank([
+                        'message' => 'Saisissez une date valide sous la forme YYYY-MM-JJ',
+                    ])
+                ],
                 'years' => range(date('Y')-150, date('Y')),
                 'label' => false,
                 'html5' => false

@@ -32,9 +32,9 @@
         <div class="booking_visitors"
              data-prototype="{{ form_widget(form.visitors.vars.prototype)|e }}">
 
-        <div class="well">
-        {{ form_row(form.visitors, {'label_attr': {'class': 'sr-only'}}) }}
-        </div>
+
+                {{ form_row(form.visitors, {'label_attr': {'class': 'sr-only'}, 'attr': {'class': 'well'}}) }}
+
         </div>
         <button id="add_form" class="btn btn-default">Ajouter un visiteur</button>
 
@@ -51,9 +51,9 @@
         <div class="row">
             <div class="col-sm-12">
                 <p>
-                <em>(*)Tarif étudiant, employé du musée, d’un service du Ministère de la Culture, militaire... Un
-                    justificatif
-                    vous sera demandé à l'entrée du musée</em>
+                    <em>(*)Tarif étudiant, employé du musée, d’un service du Ministère de la Culture, militaire... Un
+                        justificatif
+                        vous sera demandé à l'entrée du musée</em>
                 </p>
             </div>
         </div>
