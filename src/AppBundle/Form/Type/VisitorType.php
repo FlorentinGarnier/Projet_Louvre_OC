@@ -34,8 +34,8 @@ class VisitorType extends AbstractType
                 'constraints' => new Length([
                     'min' => 2,
                     'max' => 255,
-                    'minMessage' => 'Votre prénom est trop court',
-                    'maxMessage' => 'Votre prénom est trop long'
+                    'minMessage' => 'Saisir au moins 2 caractères',
+                    'maxMessage' => 'Saisir moins de 255 caracrères'
                 ])
             ])
             ->add('lastName', TextType::class,[
@@ -46,18 +46,19 @@ class VisitorType extends AbstractType
                 'constraints' => new Length([
                     'min' => 2,
                     'max' => 255,
-                    'minMessage' => 'Votre prénom est trop court',
-                    'maxMessage' => 'Votre prénom est trop long'
+                    'minMessage' => 'Saisir au moins 2 caractères',
+                    'maxMessage' => 'Saisir moins de 255 caracrères'
                 ])
             ])
             ->add('birthday', DateType::class, [
                 'widget' => 'single_text',
                 'attr' => [
                     'class' => 'birthday',
-                    'placeholder' => 'Date de naissance'
+                    'placeholder' => 'Date de naissance',
+                    'readonly' => 'readonly'
                 ],
                 'constraints' => new DateTime([
-                    'message' => 'La date de naissance n\'est pas valide'
+                    'message' => 'Saisissez une date valide sous la forme YYYY-MM-JJ'
                 ]),
                 'years' => range(date('Y')-150, date('Y')),
                 'label' => false,
@@ -65,7 +66,9 @@ class VisitorType extends AbstractType
             ])
             ->add('country', CountryType::class,[
                 'label' => false,
-                'placeholder' => 'Pays'
+                'preferred_choices' =>[
+                    'FR'
+                ]
             ])
             ->add('reduce', CheckboxType::class, [
                 'required' => false,

@@ -30,9 +30,12 @@ class BookingType extends AbstractType
             ->add('visit_date', DateType::class, [
                 'widget' => 'single_text',
                 'constraints' => new DateTime([
-                    'message' => 'La date de visite n\'est pas valide'
+                    'message' => 'Saisissez une date valide sous la forme YYYY-MM-JJ'
                 ]),
-                'html5' => false
+                'html5' => false,
+                'attr' => [
+                    'readonly' => 'readonly'
+                ]
             ])
             ->add('half_day', CheckboxType::class,[
                 'required' => false,
@@ -46,7 +49,7 @@ class BookingType extends AbstractType
             ])
             ->add('email', EmailType::class, [
                 'constraints' => new Email([
-                    'message' => 'Veuillez renseigner une adresse email valide'
+                    'message' => 'Saisissez une adresse email valide'
                     ]
                 )
             ])

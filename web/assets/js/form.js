@@ -17,7 +17,7 @@ Add visitor form on click
             return false;
         });
 
-        // On ajoute un premier champ automatiquement s'il n'en existe pas déjà un (cas d'une nouvelle annonce par exemple).
+        // On ajoute un premier champ automatiquement s'il n'en existe pas déjà un.
         if (index == 0) {
             addVisitor($container);
         } else {
