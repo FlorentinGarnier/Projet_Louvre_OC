@@ -93,7 +93,7 @@ class TicketController extends Controller
         $em = $this->getDoctrine()->getManager();
         foreach ($tickets as $ticket) {
 
-            $ticketNb = mb_strtolower('tk' . $ticket->getFirstName() . $booking->getVisitDate()->format('Ymd') . uniqid());
+            $ticketNb = mb_strtoupper('tkt' . uniqid());
             $ticket->setTicketNb($ticketNb);
             $em->persist($ticket);
             $this->get('knp_snappy.pdf')->generateFromHtml(
@@ -106,10 +106,10 @@ class TicketController extends Controller
                     'priceName' => $ticket->getPrice(),
                     'bill' => $ticket->getBill()
                 ]),
-                '/tmp/louvre/' . $ticketNb . '.pdf'
+                "/tmp/louvre/" . $ticketNb . ".pdf"
             );
 
-            $message->attach(\Swift_Attachment::fromPath('/tmp/louvre/' . $ticketNb . '.pdf'));
+            $message->attach(\Swift_Attachment::fromPath("/tmp/louvre/" . $ticketNb . ".pdf"));
         }
 
         $em->flush();
