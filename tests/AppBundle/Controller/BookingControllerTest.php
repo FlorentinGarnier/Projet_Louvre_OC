@@ -80,7 +80,7 @@ class BookingControllerTest extends WebTestCase
         $actualTime = new \DateTime();
 
 
-        if ($actualTime->format('h') >= 02) {
+        if ($actualTime->format('H') >= 14) {
             $this->value['booking']['visit_date'] = $actualTime->format('Y-m-d');
             $this->crawler = $this->client->request(
                 $this->form->getMethod(),

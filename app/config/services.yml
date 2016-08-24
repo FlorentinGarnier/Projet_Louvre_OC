@@ -12,5 +12,5 @@ services:
         arguments:    ["@doctrine.orm.default_entity_manager", "@Session"]
 
 
-    app.datechecking:
-        class:        AppBundle\DateChecking\DateChecking
+    app.bookingdatechecking:
+        class:        AppBundle\DateChecking\BookingDateChecking

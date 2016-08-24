@@ -8,7 +8,7 @@
 
 namespace AppBundle\DateChecking;
 
-class DateChecking
+class BookingDateChecking
 {
 
 
@@ -31,7 +31,7 @@ class DateChecking
         // Check if the visit date is today and not possibility to proceed for a day ticket after 2 PM
         if ($halfDay === false){
 
-            if ((date('Y-m-d',$ts) == date('Y-m-d',$todayTs)) && ($today->format('h') >= 14)) return false;
+            if ((date('Y-m-d',$ts) == date('Y-m-d',$todayTs)) && ($today->format('H') >= 14)) return false;
 
         }
 

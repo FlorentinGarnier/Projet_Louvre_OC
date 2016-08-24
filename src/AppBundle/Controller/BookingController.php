@@ -17,7 +17,7 @@ class BookingController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $dateChecking = $this->get('app.datechecking');
+        $bookingDateChecking = $this->get('app.bookingdatechecking');
         $booking = new Booking();
 
         //Annulation de la commande en cours si retour sur homepage
@@ -29,7 +29,7 @@ class BookingController extends Controller
             $visitDate = $booking->getVisitDate();
             $visitDateTS = $visitDate->getTimestamp();
 
-            if ($dateChecking->isValid($visitDateTS, $booking->getHalfDay())){
+            if ($bookingDateChecking->isValid($visitDateTS, $booking->getHalfDay())){
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($booking);
                 $em->flush();
