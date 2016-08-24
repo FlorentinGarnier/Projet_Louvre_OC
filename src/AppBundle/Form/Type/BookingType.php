@@ -52,10 +52,15 @@ class BookingType extends AbstractType
                 'allow_delete' => true,
             ])
             ->add('email', EmailType::class, [
-                'constraints' => new Email([
-                        'message' => 'Saisissez une adresse email valide'
-                    ]
-                )
+                'constraints' => [
+                    new Email([
+                            'message' => 'Saisissez une adresse email valide'
+                        ]
+                    ),
+                    new NotBlank([
+                        'message' => 'Saisissez une adresse email valide',
+                    ])
+                ]
             ]);
 
     }

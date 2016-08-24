@@ -9,7 +9,6 @@
 namespace AppBundle\Form\Type;
 
 
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
@@ -27,29 +26,39 @@ class VisitorType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName', TextType::class,[
+            ->add('firstName', TextType::class, [
                 'label' => false,
                 'attr' => [
                     'placeholder' => 'Prénom'
                 ],
-                'constraints' => new Length([
-                    'min' => 2,
-                    'max' => 125,
-                    'minMessage' => 'Saisir au moins 2 caractères',
-                    'maxMessage' => 'Saisir moins de 125 caracrères'
-                ])
+                'constraints' => [
+                    new Length([
+                        'min' => 2,
+                        'max' => 125,
+                        'minMessage' => 'Saisir au moins 2 caractères',
+                        'maxMessage' => 'Saisir moins de 125 caracrères'
+                    ]),
+                    new NotBlank([
+                        'message' => 'Saisissez votre prénom'
+                    ])
+                ]
             ])
-            ->add('lastName', TextType::class,[
+            ->add('lastName', TextType::class, [
                 'label' => false,
                 'attr' => [
                     'placeholder' => 'Nom'
                 ],
-                'constraints' => new Length([
-                    'min' => 2,
-                    'max' => 125,
-                    'minMessage' => 'Saisir au moins 2 caractères',
-                    'maxMessage' => 'Saisir moins de 125 caracrères'
-                ])
+                'constraints' => [
+                    new Length([
+                        'min' => 2,
+                        'max' => 125,
+                        'minMessage' => 'Saisir au moins 2 caractères',
+                        'maxMessage' => 'Saisir moins de 125 caracrères'
+                    ]),
+                    new NotBlank([
+                        'message' => 'Saisissez votre nom'
+                    ])
+                ]
             ])
             ->add('birthday', DateType::class, [
                 'widget' => 'single_text',
@@ -67,13 +76,13 @@ class VisitorType extends AbstractType
                         'message' => 'Saisissez une date valide sous la forme YYYY-MM-JJ',
                     ])
                 ],
-                'years' => range(date('Y')-150, date('Y')),
+                'years' => range(date('Y') - 150, date('Y')),
                 'label' => false,
                 'html5' => false
             ])
-            ->add('country', CountryType::class,[
+            ->add('country', CountryType::class, [
                 'label' => false,
-                'preferred_choices' =>[
+                'preferred_choices' => [
                     'FR'
                 ]
             ])
@@ -84,9 +93,7 @@ class VisitorType extends AbstractType
                     'type' => 'bool',
                     'message' => 'Veuillez cocher convenablement si vous avez une réduction'
                 ])
-            ])
-
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
