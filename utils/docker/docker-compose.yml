@@ -1,0 +1,79 @@
+version: "2"
+services:
+    mysql:
+      image: mysql:5.7
+      container_name: ${COMPOSE_PROJECT_NAME}-mysql
+      volumes:
+        - ./data/mysql:/var/lib/mysql
+      environment:
+        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        - MYSQL_DATABASE=${MYSQL_DATABASE}
+        - MYSQL_USER=${MYSQL_USER}
+        - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      networks:
+        - default
+      restart: always
+    webserver:
+      image: nginx
+      container_name: ${COMPOSE_PROJECT_NAME}-webserver
+      working_dir: /www
+      volumes:
+          - ../../.:/www
+          - ./nginx/mysite.template:/etc/nginx/conf.d/mysite.template
+      restart: always
+      links:
+        - php-fpm
+      networks:
+        - default
+      environment:
+        - VIRTUAL_HOST=${VIRTUAL_HOST}
+        - LETSENCRYPT_HOST=${VIRTUAL_HOST}
+        - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}
+      command: /bin/bash -c "envsubst '$$VIRTUAL_HOST' < /etc/nginx/conf.d/mysite.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+
+    php-cli:
+      build: php-cli
+      container_name: ${COMPOSE_PROJECT_NAME}-php-cli
+      working_dir: /www
+      volumes:
+        - ../../.:/www
+      networks:
+        - default
+      links:
+        - mysql
+
+    php-fpm:
+      build: php-fpm
+      container_name: ${COMPOSE_PROJECT_NAME}-php-fpm
+      working_dir: /www
+      restart: always
+      volumes:
+        - ../../.:/www
+        - ./php-fpm/php.ini:/usr/local/etc/php/php.ini
+      networks:
+        - default
+      links:
+        - mysql
+      environment:
+        - SYMFONY_ENV=prod
+
+    phpmyadmin:
+      image: phpmyadmin/phpmyadmin
+      container_name: ${COMPOSE_PROJECT_NAME}-phpmyadmin
+      environment:
+        - VIRTUAL_HOST=pma.${VIRTUAL_HOST}
+        - LETSENCRYPT_HOST=pma.${VIRTUAL_HOST}
+        - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}
+        - PMA_HOST=mysql
+      restart: always
+      networks:
+        - default
+      volumes:
+        - /sessions
+      links:
+        - mysql
+
+networks:
+  default:
+    external:
+      name: ${DOCKER_NETWORK}
