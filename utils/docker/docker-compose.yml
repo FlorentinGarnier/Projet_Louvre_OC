@@ -37,6 +37,7 @@ services:
       build: php-cli
       container_name: ${COMPOSE_PROJECT_NAME}-php-cli
       working_dir: /www
+      command: composer install --no-dev --optimize-autoloader
       volumes:
         - ../../.:/www
       networks:
