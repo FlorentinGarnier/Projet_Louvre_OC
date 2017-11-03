@@ -1,4 +1,4 @@
-version: "2"
+version: "3"
 services:
     mysql:
       image: mysql:5.7
@@ -11,7 +11,7 @@ services:
         - MYSQL_USER=${MYSQL_USER}
         - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       networks:
-        - default
+        - back
       restart: always
 
 
